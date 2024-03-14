@@ -40,7 +40,7 @@ Let's start with Plunet, but let's be brief:
 
 ![Plunet diagram](../../../assets/guides/hubspot-plunet/plunet-diagram.png)
 
-In Hubspot, thinks look similar but with a significant difference:
+In Hubspot, things look similar but with a significant difference:
 
 - There are multiple companies
 - There are multiple contacts
