@@ -63,7 +63,7 @@ Your connection property can also be a dropdown list of finite values. Use the `
 
 Which will render the dropdown:
 
-![dropdown](../../../assets/docs/dropdown.png)
+![dropdown](~/assets/docs/dropdown.png)
 
 ## Transforming connection properties into credentials
 
@@ -238,7 +238,7 @@ public class ConnectionValidator : IConnectionValidator
 
 After having all of this setup, Blackbird can now display the connection form to the user.
 
-![connection](../../../assets/docs/connection_modal.png)
+![connection](~/assets/docs/connection_modal.png)
 
 ## Accessing credentials in actions and events
 

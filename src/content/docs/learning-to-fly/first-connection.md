@@ -14,4 +14,4 @@ Before you begin you need to make sure that you have an app. You can navigate to
 
 When you have one or multiple apps added in your view, you can click on the app to start connecting. On the connections screen click _Add connection_. Follow the instructions or read the app specific documentation.
 
-![connection](../../../assets/docs/connection.png)
+![connection](~/assets/docs/connection.png)

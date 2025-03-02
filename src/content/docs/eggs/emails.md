@@ -34,16 +34,16 @@ New order/project details are sent as reply. Machine translated files can also b
 - **Polling Events:** Some apps use [polling](https://docs.blackbird.io/concepts/triggers/#polling) instead of webhooks to detect new emails. Check for an _Interval_ tab when setting up your trigger and choose the appropriate time for you (between 5 minutes and 7 days).
 
 Egg getting emails from Outlook into DeepL and Trados.
-![Egg with emails](../../../assets/docs/eggs/Egg6_Outlook_DeepL_Trados.png)
+![Egg with emails](~/assets/docs/eggs/Egg6_Outlook_DeepL_Trados.png)
 
 Closer look at reply email.
-![Email reply](../../../assets/docs/eggs/Egg6_InstantReply.png)
+![Email reply](~/assets/docs/eggs/Egg6_InstantReply.png)
 
 Example prompt to get language codes
-![LLM prompt](../../../assets/docs/eggs/Egg6_GetLanguageExample.png)
+![LLM prompt](~/assets/docs/eggs/Egg6_GetLanguageExample.png)
 
 Extracting language codes using Regular expressions.
-![Regex](../../../assets/docs/eggs/Egg6_ExtractLanguagesRegex.png)
+![Regex](~/assets/docs/eggs/Egg6_ExtractLanguagesRegex.png)
 
 ## Download an Egg
 
@@ -64,4 +64,4 @@ To import an Egg into your Nest:
 5. Update the Connection details and any other needed input/output parameters or desired steps. Look for red warning signs next to the step name signaling missing details in said step.
 6. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

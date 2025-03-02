@@ -33,13 +33,13 @@ Then:
 
 Without going over the details, the first part of the workflow looks like this:
 
-![Initial](../../../assets/guides/linking/initial.png)
+![Initial](~/assets/guides/linking/initial.png)
 
 We are using a loop over all the attachments in the issue, then download the attachment and create a Phrase job out of these, together with the language that was selected from a dropdown in Jira.
 
 Then se second part of the workflow will look like this:
 
-![Missing key](../../../assets/guides/linking/missing-key.png)
+![Missing key](~/assets/guides/linking/missing-key.png)
 
 We download the translated file and then we want to add it to our Jira ticket. However, we are now confronted with the exact same problem we mentioned earlier: **given this completed job, what issue did it correspond to?**
 
@@ -51,11 +51,11 @@ In order to answer this question, we need to add one more step to our first work
 
 Click on the `+` icon and select _Operator_. Then on the menu on the right, select _Entity connection_.
 
-![Connection](../../../assets/guides/linking/connection.png)
+![Connection](~/assets/guides/linking/connection.png)
 
 Then for type select _Link entities_. We now have to define the names and the IDs of our two entities. We recommend using recognizable names. In our case we use `Jira_issue` and we select the _Issue key_ (which is the ID for the issue which we'll want in our second bird), and we link it to `Phrase_job` and add the _UID_ of the Phrase job we just created.
 
-![Setup](../../../assets/guides/linking/setup.png)
+![Setup](~/assets/guides/linking/setup.png)
 
 Done! We can now fly this bird and verify that it does so succesfully. When we have added the _Link entities_ operator to our bird we can now make use of this link in our other bird.
 
@@ -65,7 +65,7 @@ Done! We can now fly this bird and verify that it does so succesfully. When we h
 
 Let's return to the bird responsible for putting the translations back into Jira. Between the Phrase and Jira actions we can now add the _Entity connection_ operator again. This time, instead of choosing _Link entities_ as its type, we will choose _Get linked entity_.
 
-![Get entity](../../../assets/guides/linking/get-entity.png)
+![Get entity](~/assets/guides/linking/get-entity.png)
 
 When we click on _name_, we will see a dropdown with all the different entity types that Blackbird stored for you. We know that we havea Phrase job and we want a Jira issue, therefore, we select `Phrase_job` and fill in the Job ID we received through the event. Then for connected entity, we select `Jira_issue`.
 
@@ -73,7 +73,7 @@ Hooray! We have now retrieved the linked entity!
 
 We can now use this ID (which in our case represents the Jira issue key) in our final action to complete the bird.
 
-![Complete](../../../assets/guides/linking/complete.png)
+![Complete](~/assets/guides/linking/complete.png)
 
 Et Voila, when the Phrase job is completed, we now see our attachments returned in the correct Jira ticket! 🎉
 

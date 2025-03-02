@@ -18,22 +18,22 @@ The [Utilities](https://docs.blackbird.io/apps/utilities/) app provides a wide r
 - Files: 
     - You can extract the name of a file and even change it - you may want to append the language name you are translating the file into to the name of the file. 
     - You can also get the extension of a file, which would be very useful in case you need to route files of different types into different paths. 
-    ![Getting File Extension](../../../assets/guides/toolbox/Toolbox_1.png)
+    ![Getting File Extension](~/assets/guides/toolbox/Toolbox_1.png)
     - You can count the number of words or characters in a file. Maybe you need to keep track of how many characters are sent to your MT engine because you are charged based on this, then it becomes a valuable piece of data to extract and record. 
 - Text:
     - It is also possible to count words and characters from text formats. So, if you pick up a message from Slack or Teams, or you want to know how long a file name is, you can use the actions in Utilities to count any of these.
-    ![Char count of text](../../../assets/guides/toolbox/Toolbox_2.png)
+    ![Char count of text](~/assets/guides/toolbox/Toolbox_2.png)
     - Regular expressions can be used to extract or replace content from text. While extracting content, you can specify as optional parameter the group number you want to extract specifically. Or you can use grouping with the replace action to regroup parts of your text. With these options you can extract email addresses from a message or a list of language codes from an email body. 
-    ![Extract with Regex](../../../assets/guides/toolbox/Toolbox_3.png)
+    ![Extract with Regex](~/assets/guides/toolbox/Toolbox_3.png)
 - Range of numbers:
     - Providing a start and end point, a range of numbers can be generated. This is particularly useful when paired with a Loop because you need to repeat an action an X number of times. A good use case is iterating through the rows of a table (think of Microsoft Excel) and getting information from column A, processing it and finally pasting the result to column B. In this scenario, you can use the numbers in the range to indicate the row number.
-    ![Range and Excel](../../../assets/guides/toolbox/Toolbox_4.png)
+    ![Range and Excel](~/assets/guides/toolbox/Toolbox_4.png)
 - Arrays:
     - There are also a couple of useful option to work with arrays or groups of items. Using the "Array Contains" action you can check whether one value is included in the array or not, and make decisions based on that. For instance, one of your clients does not exist in your list of contacts, therefore you can add them without creating duplicates. 
     - Speaking of duplicates, there is also an action to return a list of unique values given an array as input. 
 - Scraping:
     - Raw and unformatted web page content can be extracted from a URL. You can also provide an XPATH to specify the exact content to be scrapped. This is particularly useful if you need to take content from a webpage but don't have access to the CMS or source code.
-    ![Scrapping + summarize](../../../assets/guides/toolbox/Toolbox_5.png)
+    ![Scrapping + summarize](~/assets/guides/toolbox/Toolbox_5.png)
 
 - XML files:
     - If you are working with XML files, you may need to get the value from a specific property, or change it, or even update the version property. These are all possible. 
@@ -45,7 +45,7 @@ The [Utilities](https://docs.blackbird.io/apps/utilities/) app provides a wide r
 
 This app contains a collection of pre-engineered prompts that can be used in conjunction with different AI apps. These prompts have proved to be successful when working with language actions. The list comprises prompts for getting translation issues, summarizing text, getting translation reports, performing post editing, and more. 
 
-![List of prompts](../../../assets/guides/toolbox/Toolbox_6.png)
+![List of prompts](~/assets/guides/toolbox/Toolbox_6.png)
 
 ## HTTP app
 
@@ -55,11 +55,11 @@ This application allows you to perform basic HTTP requests (GET/POST/PUT/PATCH/D
 
 When adding an action via plus sign, you can also choose to add an Operator instead. The string operator is very handy and popular as it allows very interesting options.
 
-![Operators](../../../assets/guides/toolbox/Toolbox_7.png)
+![Operators](~/assets/guides/toolbox/Toolbox_7.png)
 
 - String Compose: This option allows the user to compose a message, whether by typing or using outputs from previous actions or both multiple times. This super powerful tool allows you to create a message stating, for example, that the article + _the name of the article_ + has been published to + _the URL value_ + in + _language it has been translated to_.
 
-![Compose message](../../../assets/guides/toolbox/Toolbox_8.png)
+![Compose message](~/assets/guides/toolbox/Toolbox_8.png)
 
 - String Split: Given a string of text, maybe a list of items in text format. You can specify the separator and get in return an actual list that you can loop through and treat each of these items separately. 
 

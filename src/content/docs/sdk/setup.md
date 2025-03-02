@@ -36,7 +36,7 @@ To use the NuGet Package Manager to install the `Blackbird.Applications.Sdk.Comm
 3. From the _Browse_ tab, search for _Blackbird.Applications.Sdk.Common_, select `Blackbird.Applications.Sdk.Common` in the list, and then select _Install_.
 4. When you are prompted to verify the installation, select _OK_.
 
-![nuget](../../../assets/docs/nuget.png)
+![nuget](~/assets/docs/nuget.png)
 
 ## From a template
 
@@ -58,4 +58,4 @@ When deploying your modifications, you do so in a custom app. Please see the [de
 
 Blackbird uses properties defined in the `.csproj` file to populate metadata fields. For most custom apps, only the Version and AssemblyName are relevant (the other properties are defined in the UI). When uploading a newer version of an existing app, make sure the version number is higher.
 
-![nuget](../../../assets/docs/csproj.png)
+![nuget](~/assets/docs/csproj.png)

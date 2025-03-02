@@ -25,7 +25,7 @@ The most popular use case for the Blackbird app in Blackbird is monitoring faile
 
 > Use optional inputs to monitor a specific Nest, otherwise a single Bird will monitor all Nests within your Blackbird instance.
 
-![Egg](../../../assets/docs/eggs/BBApp1.png)
+![Egg](~/assets/docs/eggs/BBApp1.png)
 Error escalation Bird
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Report_failed_Flights_on_Slack.json" download>Report failed Flights on Slack</a>
@@ -33,7 +33,7 @@ Error escalation Bird
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Report_failed_Flights_via_Outlook_email.json" download>Report failed Flights via Outlook email</a>
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Report_failed_Flights_via_Gmail.json" download>Report failed Flights via Gmail</a>
 
-![Egg](../../../assets/docs/eggs/BBApp2.png)
+![Egg](~/assets/docs/eggs/BBApp2.png)
 Error logging Bird
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Log_failed_Flights_on_Google_Sheets.json" download>Log failed Flights on Google Sheets</a>
@@ -43,7 +43,7 @@ Error logging Bird
 
 Monitor users added or removed from a specific Nest.
 
-![Egg](../../../assets/docs/eggs/BBApp3.png)
+![Egg](~/assets/docs/eggs/BBApp3.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/On_user_removed_send_Slack_message.json" download>On user removed send Slack message</a>
 
@@ -51,7 +51,7 @@ Monitor users added or removed from a specific Nest.
 
 Get notified when Birds are suspended or activated: get real-time notifications of changes in your Production Nest.
 
-![Egg](../../../assets/docs/eggs/BBApp4.png)
+![Egg](~/assets/docs/eggs/BBApp4.png)
 
 > Use optional inputs to monitor a specific Nest, otherwise, a single Bird will monitor all Nests within your Blackbird instance.
 
@@ -69,4 +69,4 @@ To import an Egg into your Nest:
 6. Click on the three dots next to the Bird's name and update the apps if there are updates available.
 7. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

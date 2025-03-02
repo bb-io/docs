@@ -14,7 +14,7 @@ Before deploying an app, make sure that it at least contains a class that implem
 
 1. Right-click on your project in the solution explorer and click _Publish_
 
-![connection](../../../assets/docs/publishing.png)
+![connection](~/assets/docs/publishing.png)
 
 2. If you have not created a publish profile yet, create a publish profile that publishes to a local folder.
 3. Click _Publish_ and then _Open folder_
@@ -22,7 +22,7 @@ Before deploying an app, make sure that it at least contains a class that implem
 
 > **Note: If you are working on a Mac, make sure to delete the hidden _\_MACOSX_ folder in the zip archive before uploading it to Blackbird.**
 
-![zipping](../../../assets/docs/zipping.png)
+![zipping](~/assets/docs/zipping.png)
 
 ## Uploading
 
@@ -32,4 +32,4 @@ If you want to update an existing app. On the app you want to update click _New 
 
 > Note: When updating an app, make sure that the new version of the app (defined in the `.csproj` file) is higher than the existing version.
 
-![zipping](../../../assets/docs/upload.png)
+![zipping](~/assets/docs/upload.png)

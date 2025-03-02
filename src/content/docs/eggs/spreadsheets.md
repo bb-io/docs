@@ -21,7 +21,7 @@ Spreadsheets can be a powerful tool to capture key data points at various stages
 
 The `Add new sheet row` action in Blackbird is ideal for this purpose. It **appends a new row at the end of the spreadsheet's used range** and allows multiple data points to be passed into consecutive cells, maintaining the order you specify in Blackbird. It will also check if there are rows available (Google Sheets) and add one in case we are at the spreadsheet's end. 
 
-![Add new sheet row](../../../assets/docs/eggs/AddNewSheetRow.png)
+![Add new sheet row](~/assets/docs/eggs/AddNewSheetRow.png)
 
 ### Searching and Updating Information
 
@@ -29,11 +29,11 @@ Managing dynamic data in spreadsheets often involves searching for and updating 
 Example: You may have a column in your table with unique order IDs. Every time an update occurs, you want to log these changes (maybe a status update) in your spreadsheet, use the `Find sheet row` action to locate the relevant row for that particular order, and subsequent actions like `Update sheet row` or `Update sheet cell` will allow you to modify information —such as the order status— in a different column but corresponding row.
 This action can also be paired with a decision point to check if the unique value already exists in the spreadsheet. If the output is null, you can add a new entry; otherwise, update the existing one.
 
-![FindSheetRow](../../../assets/docs/eggs/FindSheetRow.png)
+![FindSheetRow](~/assets/docs/eggs/FindSheetRow.png)
 
 The same can be done in Airtable. The image below shows a Bird tha starts whenever a project status has been updated in Bureau Works, then the ID of the updated project is used as unique identifier in a column and we get the row information back by using the `Search record` action. Then, we update the correct cell with the new status for the corresponding project. Keeping my project information up to date. 
 
-![AirtableSearchRecord](../../../assets/docs/eggs/AirtableSearchRecord.png)
+![AirtableSearchRecord](~/assets/docs/eggs/AirtableSearchRecord.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Bureau_Works_to_Airtable.json" download>Airtable Search record</a>
 
@@ -48,7 +48,7 @@ If you already know the rows or subset of rows you want to work with, you can ge
 3. Inside the loop, use the `Get sheet cell` action to retrieve data by composing the cell address (combining the known column with the current row number from the loop).
 4. After processing the extracted data, use the `Update sheet cell` action to add your result, or mark the row as processed.
 
-![Generate range](../../../assets/docs/eggs/GenerateRange.png)
+![Generate range](~/assets/docs/eggs/GenerateRange.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/excel_generate_range.json" download>Microsoft Excel Generate Range</a>
 
@@ -60,7 +60,7 @@ In a very similar fashion, when the number of rows in the spreadsheet is unknown
 
 > Note that you can input 2 as the start row for your range generation in case you want to spare the spreadsheet headers.
 
-![Generate range Google Sheets](../../../assets/docs/eggs/GenerateRange2.png)
+![Generate range Google Sheets](~/assets/docs/eggs/GenerateRange2.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/google_sheets_generate_range.json" download>Google Sheets Generate Range</a>
 
@@ -72,11 +72,11 @@ If you need to extract multiple values from each row, treating each row as an ar
 3. Use the `Get entry by position` action from the Utilities app to extract specific column values based on their position in the array (e.g., position 3 for column C).
 4. After you have processed the data, you can `Update sheet cell` by composing the cell address (using Row ID from the loop and specifying the column)
 
-![Iterate through range](../../../assets/docs/eggs/IterateThroughRangeSheets.png)
+![Iterate through range](~/assets/docs/eggs/IterateThroughRangeSheets.png)
 
 Another variant, using a subset and multiple column entries as input for other actions:
 
-![Iterate through range](../../../assets/docs/eggs/IterateThroughRangeExcel.png)
+![Iterate through range](~/assets/docs/eggs/IterateThroughRangeExcel.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/google_sheets_iterate_through_range.json" download>Google Sheets Iterate through Range</a>
 - Download Egg: <a href="https://docs.blackbird.io/downloads/microsoft_excel_iterate_through_range.json.json" download>Microsoft Excel Generate Range</a>
@@ -87,13 +87,13 @@ In some workflows, it might be necessary to handle bulk updates or retrieve mult
 #### Update Sheet Column
 When you have a list or array of values (e.g., target language codes or file names) that you want to populate in a spreadsheet column, the `Update sheet column` action makes it easy. This action can take as input one or more arrays and/or a group of single values. These will be written into the spreadsheet's specified column one value below the other starting in the provided cell address and respecting the same order as they were listed in the action's input.
 
-![Update Sheet Column](../../../assets/docs/eggs/Update-sheet-column.png)
+![Update Sheet Column](~/assets/docs/eggs/Update-sheet-column.png)
 
 #### Get Sheet Column
 
 Similarly, you might need to retrieve a set of values from a specific column for later use. Use the `Get column` action to specify the column (e.g., column C) and the start and end cells (e.g., 1 to 10). The output will be an array containing the values from the specified column range that you can later use as input for the subsequent steps.
 
-![Get column](../../../assets/docs/eggs/GetColumn.png)
+![Get column](~/assets/docs/eggs/GetColumn.png)
 
 ## Importing Eggs
 
@@ -106,4 +106,4 @@ To import an Egg into your Nest:
 5. Update the Connection details and any other needed input/output parameters or desired steps. Look for red warning signs next to the step name signaling missing details in said step.
 6. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

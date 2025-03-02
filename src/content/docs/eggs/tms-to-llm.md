@@ -25,7 +25,7 @@ The downloaded files are sent to an LLM for processing.
 Processed files are uploaded back to the TMS.
 
 Egg between Phrase and Anthropic
-![Egg](../../../assets/docs/eggs/Egg2-Phrase-to-Anthropic.png)
+![Egg](~/assets/docs/eggs/Egg2-Phrase-to-Anthropic.png)
 
 ## Tips
 
@@ -38,10 +38,10 @@ Egg between Phrase and Anthropic
 - **Loops are needed:** Whether to iterate through a list of target languages or to send each file within a group of downloaded files to an action that only takes one at a time, [loops](https://docs.blackbird.io/guides/loops/) are the key.
 
 Egg between MemoQ and Anthropic
-![Egg simple](../../../assets/docs/eggs/Egg2-memoQ-to-Anthropic.png)
+![Egg simple](~/assets/docs/eggs/Egg2-memoQ-to-Anthropic.png)
 
 Egg between MemoQ and OpenAI with glossaries.
-![Egg with Glossary](../../../assets/docs/eggs/Egg2-memoQ-to-OpenAI-with-glossary.png)
+![Egg with Glossary](~/assets/docs/eggs/Egg2-memoQ-to-OpenAI-with-glossary.png)
 
 ## Suggested Apps
 
@@ -72,4 +72,4 @@ To import an Egg into your Nest:
 6. Click on the three dots next to the Bird's name and update the apps if there are updates available.
 7. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

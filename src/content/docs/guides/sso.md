@@ -16,7 +16,7 @@ At Blackbird, we offer flexible sign-in options to suit your needs. You can eith
 
 On the sign-in screen, select the Google or Microsoft button after entering your email address.
 
-![Initial](../../../assets/guides/sso/buttons.png)
+![Initial](~/assets/guides/sso/buttons.png)
 
 This action will open the selected service and prompt you to sign in, if you haven't done so already.
 
