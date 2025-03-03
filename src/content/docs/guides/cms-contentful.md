@@ -51,7 +51,7 @@ At their core, all workflows involving CMSs will contain the following structure
 
 The 3 P's of CMS workflows will always find their way into your birds.
 
-![Schematic](../../../assets/guides/cms/1729004201270.png)
+![Schematic](~/assets/guides/cms/1729004201270.png)
 
 It is up to you to make the most important decisions that, together with the 3 P's, will shape your bird:
 
@@ -70,7 +70,7 @@ When you have decided on these aspects, you will see that Blackbird will take ca
 
 Let's take this theoretical workflow and put it into practise. In the image below you see an example of the pull, process and push steps with their respective actions in Contentful. The **Get entry as HTML file** is used to retrieve an HTML file representing the entry. In this case, DeepL is used in order to process the file (translating it into another language). Then finally, the **Update entry from HTML file** action is used to take the translated HTML file from DeepL and push it back to Contentful. Of course, DeepL can be swapped out for any other single-action processing application and this workflow would look similarly with other CMSs.
 
-![Core with NMT](../../../assets/guides/cms/1729083328505.png)
+![Core with NMT](~/assets/guides/cms/1729083328505.png)
 
 ### 2.2 Human-in-the-orchestration
 
@@ -78,7 +78,7 @@ It's more than likely that mere machine processing does not satisfy your localiz
 
 > **💡 Note**: Checkout our [checkpoints concept guide](../../concepts/checkpoints) to learn more about checkpoints!
 
-![Core with TMS](../../../assets/guides/cms/1729083153924.png)
+![Core with TMS](~/assets/guides/cms/1729083153924.png)
 
 ## 3. Continuous localization
 
@@ -86,7 +86,7 @@ You have learned how the core translation workflow is typically constructed in a
 
 For our Contentful core translation workflow, all we actually need to do is create an event that is triggered when new content is created (or published in our case). Then we point the **Get entry as HTML file** to the entry ID we receive from the event.
 
-![Continuous localization](../../../assets/guides/cms/continuous.gif)
+![Continuous localization](~/assets/guides/cms/continuous.gif)
 
 That's it! Continuous localization checked off. ✔️
 
@@ -94,7 +94,7 @@ The critical reader, Contentful veteran or both, will point out a small flaw in 
 
 We recommend looking into the supporting features that CMSs have like **tags** or **custom fields** as mentioned earlier. A popular way to deal with this in Contentful is to use the tags system. You can add filters to the entry events in Blackbird so that only entries with a certain tag will trigger the bird. A good candidate could be *Ready for localization*. Be sure to delete the tag at the end of your workflow!
 
-![Core with tags](../../../assets/guides/cms/1729086551991.png)
+![Core with tags](~/assets/guides/cms/1729086551991.png)
 
 ## 4. Scheduled and historical localization
 
@@ -102,7 +102,7 @@ It's possible that continuous localization doesn't quite tickle your fancy. Perh
 
 Every CMS has an action in the shape of *Search entities*, which you can use to search and select the exact content you want to process. It ususally comes with different filters including a *Updated from* and *Updated to* filter that you can use to select the time range in which the content is allowed to be updated.
 
-![Scheduled memoQ](../../../assets/guides/cms/1729090495297.png)
+![Scheduled memoQ](~/assets/guides/cms/1729090495297.png)
 
 ## 5. Processing multiple languages
 
@@ -110,13 +110,13 @@ So far every bird we've seen only translated the content into one language. Howe
 
 In the easiest scenario the languages you want to translate to are pre-defined as per some agreement. Usually you can then "hardcode" these languages into the actions that require them. It's also likely that you want to be clever and get the languages as they are defined in the CMS. Most CMS apps havea **Get locales** or **Get languages* action that will return the default language and the other languages that are configured. This is perfect! Because now you can send those languages directly into your processing application.
 
-![TMS languages](../../../assets/guides/cms/1729176014667.png)
+![TMS languages](~/assets/guides/cms/1729176014667.png)
 
 There is a very important thing to point out when sending languages from one system to the other: they may not be using the same languages codes. That's why in the bird section above we are using the **Convert operator** to convert from Contentful language codes into memoQ language codes. You can read more about conversion and libraries in [this guide](../../concepts/libraries).
 
 A TMS can usually take all the languages you want to convert to in a single input field, since it would create a project for your content. However, NMT and other single-step processing apps tend to only take one language at a time. In this case you will have to loop over all the languages and process them for each file (see gif below). You can find more information about loops [here](../loops).
 
-![Continuous localization](../../../assets/guides/cms/multilocales.gif)
+![Continuous localization](~/assets/guides/cms/multilocales.gif)
 
 ## 6. Contentful gotchas
 
@@ -147,7 +147,7 @@ In the action you are able to select exactly which type of linked entry you want
 
 Finally, finding embeded entries recursively but indefinitely can be quite dangerous. You may want to explain to Blackbird where and with which field types to stop. You can specify a list of Field IDs which will always be ignored and not added to the produced HTML file.
 
-![Contentful surgical](../../../assets/guides/cms/1729093156381.png)
+![Contentful surgical](~/assets/guides/cms/1729093156381.png)
 
 ### 6.2 Contentful workflows
 

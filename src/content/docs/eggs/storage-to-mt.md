@@ -25,7 +25,7 @@ The downloaded files are sent to a machine translation engine for quick processi
 Translated files are uploaded back to the cloud storage, placed in a designated output folder.
 
 Egg between Google Drive and DeepL
-![Egg](../../../assets/docs/eggs/Eggs1.png)
+![Egg](~/assets/docs/eggs/Eggs1.png)
 
 ## Tips
 
@@ -39,10 +39,10 @@ Egg between Google Drive and DeepL
 - **File renaming:** You can change the name of files before re-uploading them. If you want to append the target language code at the end of your file name or indicate through the file name that it has been MTed, you can use the [Utilities](https://docs.blackbird.io/apps/utilities/) app or other [helpers](https://docs.blackbird.io/guides/toolbox/). There is a downloadable workflow example for this at the [bottom of the page](https://docs.blackbird.io/eggs/storage-to-mt/#download-an-egg).
 
 Egg between Google Drive and DeepL with glossaries.
-![Egg with Glossary](../../../assets/docs/eggs/Eggs1_withGlossary.png)
+![Egg with Glossary](~/assets/docs/eggs/Eggs1_withGlossary.png)
 
 Adding an array of language codes to a loop.
-![Multiple languages](../../../assets/docs/eggs/MultipleLangs.png)
+![Multiple languages](~/assets/docs/eggs/MultipleLangs.png)
 
 ## Suggested Apps
 
@@ -64,10 +64,10 @@ Adding an array of language codes to a loop.
 - [Google Translate](https://docs.blackbird.io/apps/google-translate/)
 
 Egg between Dropbox and GlobalLink NOW
-![Egg GL NOW](../../../assets/docs/eggs/Eggs1_GlobalLinkNow.png)
+![Egg GL NOW](~/assets/docs/eggs/Eggs1_GlobalLinkNow.png)
 
 Egg between Amazon S3 and Lanugage Weaver
-![Egg S3 Language Weaver](../../../assets/docs/eggs/Eggs1_S3toLanguageWeaver.png)
+![Egg S3 Language Weaver](~/assets/docs/eggs/Eggs1_S3toLanguageWeaver.png)
 
 ## Download an Egg
 
@@ -92,4 +92,4 @@ To import an Egg into your Nest:
 5. Update the Connction details and any other needed input/output parameters or desired steps. Look for red warning signs next to the step name signaling missing details in said step.
 6. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

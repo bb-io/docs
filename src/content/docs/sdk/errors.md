@@ -12,7 +12,7 @@ There are 5 different types of errors that can be displayed on the flights page.
 
 ## 1. Configuration error
 
-![Configuration exception](../../../assets/docs/conventions/configuration_error.png)
+![Configuration exception](~/assets/docs/conventions/configuration_error.png)
 
 The purpose of this error is to notify the user that **they made a mistake** and **only they can resolve**. This typically happens with misconfigured variables, values or environments. Hence this error type is called a *configuration error*. Examples of configuration errors are:
 
@@ -48,7 +48,7 @@ try
 
 ## 2. App not responding
 
-![app not responding](../../../assets/docs/conventions/not_responding_error.png)
+![app not responding](~/assets/docs/conventions/not_responding_error.png)
 
 The purpose of this error is to notify the user that **the connected app has issues that neither you** (the app developer), **nor the user can do anything about**. This is typically the case when the app throws an unexpected issue (500), or when the API throws an error that is intended for the user, rather than the app developer. Examples are:
 
@@ -62,7 +62,7 @@ The app not responding error can be thrown with the `PluginApplicationException`
 
 ## 3. Unexpected app issue
 
-![unexpected_error](../../../assets/docs/conventions/unexpected_error.png)
+![unexpected_error](~/assets/docs/conventions/unexpected_error.png)
 
 All other errors that are thrown by your app will appear as *unexpected errors*. The goal is to **minimize the amount of unexpected errors**. If an unexpected error is seen, it's the responsibility of the app developer to either handle the error in code, or throw any of the other 2 error types.
 

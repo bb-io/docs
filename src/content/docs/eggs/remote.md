@@ -21,7 +21,7 @@ In this Egg-guide, let's explore some options to integrate [Remote.com](https://
 
 The Bird shown below creates a new employment in Remote as soon as a new Resource has been set as Active in Plunet.
 
-![PlunettoRemote](../../../assets/docs/eggs/PlunetResourceActivatedCreateRemoteEmployment.png)
+![PlunettoRemote](~/assets/docs/eggs/PlunetResourceActivatedCreateRemoteEmployment.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Plunet_resource_activated_to_Remote_Employment.json" download>On Plunet resource activated create Remote employment</a>
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Remote_employment_completed_set_Plunet_resource_Active.json" download>On Remote employment completed set Plunet resource active</a>
@@ -30,7 +30,7 @@ The Bird shown below creates a new employment in Remote as soon as a new Resourc
 
 This Bird is triggered weekly, searches invoices in XTRF that been updated during the last week, exports them and imports them into Remote. Note the Convert operator being used to pull data from a custom library. 
 
-![XTRFtoRemote](../../../assets/docs/eggs/XtrfInvoiceToRemote.png)
+![XTRFtoRemote](~/assets/docs/eggs/XtrfInvoiceToRemote.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/XTRF_invoice_to_Remote.json" download>XTRF invoice to Remote</a>
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Remote_to_XTRF_invoice_status_update.json" download>Remote to XTRF invoice status update</a>
@@ -39,7 +39,7 @@ This Bird is triggered weekly, searches invoices in XTRF that been updated durin
 
 The image below displays a Bird that is triggered whenever a time off request has been approved in Remote, then adds an event to Microsoft 365 calendar, logs the time-off details in an Excel sheet and sends a Slack notification.
 
-![RemoteTimeoffApproved](../../../assets/docs/eggs/RemoteTimeoffApproved.png)
+![RemoteTimeoffApproved](~/assets/docs/eggs/RemoteTimeoffApproved.png)
 
 - Download Egg: <a href="https://docs.blackbird.io/downloads/On_timeoff_approved_add_to_Calendar_Excel.json" download>On timeoff approved add to calendar and Excel</a>
 - Download Egg: <a href="https://docs.blackbird.io/downloads/Manual_payout_notification.json" download>Monthly manual payout notification</a>
@@ -63,4 +63,4 @@ To import an Egg into your Nest:
 5. Update the Connection details and any other needed input/output parameters or desired steps. Look for red warning signs next to the step name signaling missing details in said step.
 6. Click Save/Publish.
 
-![Importing Eggs](../../../assets/docs/eggs/ImportEggs.gif)
+![Importing Eggs](~/assets/docs/eggs/ImportEggs.gif)

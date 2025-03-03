@@ -19,7 +19,7 @@ To set up a retry policy in Blackbird:
 2. Define the maximum number of retries in the '_Number of retries_' field.
 3. Specify the retry interval in the '_Frequency (Seconds)_' field.
 
-![Retry policy](../../../assets/guides/errors/retry.png)
+![Retry policy](~/assets/guides/errors/retry.png)
 
 The bird will now attempt to re-execute the action the designated number of times at the specified interval if it encounters an error.
 
@@ -44,7 +44,7 @@ To enable this:
 1. Find the desired action in your workflow, then go to the '_Error Handling_' tab.
 2. Toggle '_Enable Skip Action_' on.
 
-![Skip](../../../assets/guides/errors/skip.png)
+![Skip](~/assets/guides/errors/skip.png)
 
 Now, if this particular action errors, it will be skipped, allowing the workflow to proceed.
 

@@ -47,7 +47,7 @@ The `DataSourceContext.SearchString` provides the typed in search string by the 
 
 You should return a `IEnumerable<DataSourceItem>` where the `value` argument of a `DataSourceItem` represents the value that will be "filled in" e.g. the ID of a certain status or entity. The second argument is the displayed name.
 
-![connection](../../../assets/docs/dynamic_input.png)
+![connection](~/assets/docs/dynamic_input.png)
 
 ### Advanced context
 

@@ -89,9 +89,9 @@ Secondly, take into account that connection fields can also have display names, 
 
 Connection field names should be short, descriptive and clear. From the field name the user should be able to figure out what exact data is required from them.
 
-![Connection definition](../../../assets/docs/conventions/connection_fields.png)
+![Connection definition](~/assets/docs/conventions/connection_fields.png)
 
-![Connection details](../../../assets/docs/conventions/connection_details.png)
+![Connection details](~/assets/docs/conventions/connection_details.png)
 
 ## 5. Data sources
 
@@ -230,7 +230,7 @@ In many apps that Blackbird typically connects with, it's very common that files
 Because users often think of files as batches, we want to enhance their experience and not force users to have to resort to loops to do very basic operations. If the envisioned bird is to move files from a folder to a project, then no loop should have to be required.
 
 On a very high level, most apps should be able to follow this pattern:
-![File actions](../../../assets/docs/conventions/file_actions.png)
+![File actions](~/assets/docs/conventions/file_actions.png)
 
 In order to do this we need to adhere to the following principles:
 

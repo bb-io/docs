@@ -14,4 +14,4 @@ To check your flights, navigate to the _Flights_ tab and click on a flight in th
 
 You can click _Edit_ to open the editor page of the current Bird, where you can make the necessary edits.
 
-![connection](../../../assets/docs/flight-details.png)
+![connection](~/assets/docs/flight-details.png)

@@ -38,7 +38,7 @@ Let's start with Plunet, but let's be brief:
 - There can be multiple orders, each representing business negotiated with a customer.
 - A Plunet order is linked to an 'internal resource' as project manager, a customer and a contact person of that customer.
 
-![Plunet diagram](../../../assets/guides/hubspot-plunet/plunet-diagram.png)
+![Plunet diagram](~/assets/guides/hubspot-plunet/plunet-diagram.png)
 
 In Hubspot, things look similar but with a significant difference:
 
@@ -47,13 +47,13 @@ In Hubspot, things look similar but with a significant difference:
 - There are multiple deals. A deal has a 'deal owner' who is a Hubspot user
 - Between these three entities, many-to-many relationships exist. And Hubspot uses 'associations' to keep track of these relationships.
 
-![Hubspot diagram](../../../assets/guides/hubspot-plunet/hubspot-diagram.png)
+![Hubspot diagram](~/assets/guides/hubspot-plunet/hubspot-diagram.png)
 
 These structures are similar enough to create a mapping between the two. However, in some cases these similarities don't exist. In those cases it is prudent to investigate how people have mapped these relationships in their organization.
 
 Let's draw the semantic relationship map:
 
-![Hubspot Plunet](../../../assets/guides/hubspot-plunet/hubspot-plunet.png)
+![Hubspot Plunet](~/assets/guides/hubspot-plunet/hubspot-plunet.png)
 
 ## 3. Implementating the relationships
 
@@ -63,11 +63,11 @@ Somewhere, references to the other equivalent entity need to be stored. Luckily,
 
 For Plunet, we create a _text module_ and apply it to Customers, internal resources, and orders. The name of the text module will be _Hubspot ID_ so that we can save the Hubspot IDs of equivalent entities. For more information on text modules, see the [Plunet documentation](https://kb.plunet.com/display/KB/Text+modules).
 
-![Plunet text module](../../../assets/guides/hubspot-plunet/plunet-text-module.png)
+![Plunet text module](~/assets/guides/hubspot-plunet/plunet-text-module.png)
 
 In Hubspot, every entity can also have _Custom properties_ (Settings -> Data Management -> Properties). We can create a new property on each of our relevant entities. For more information on custom properties, see the [Hubspot documentation](https://knowledge.hubspot.com/properties/create-and-edit-properties)
 
-![Plunet properties](../../../assets/guides/hubspot-plunet/hubspot-properties.png)
+![Plunet properties](~/assets/guides/hubspot-plunet/hubspot-properties.png)
 
 We have not created the infrastructure required to semantically link the entities in our two separate systems and we're ready to move on to the next step!
 
@@ -97,7 +97,7 @@ So it seems that our bird is going to be pretty straightforward! We perform abou
 
 Finally, we're ready to build the bird! If you have planned your actions correctly then the actions in your bird should basically correspond with the manual steps you would have to perform.
 
-![Simple bird](../../../assets/guides/hubspot-plunet/bird-simple.png)
+![Simple bird](~/assets/guides/hubspot-plunet/bird-simple.png)
 
 As you can see, the numbered actions correspond to the steps we planned above!
 
@@ -115,7 +115,7 @@ The best way to circumvent this new problem we created for ourselves, is to simp
 
 With those details added, our complete bird looks like this:
 
-![Complete bird](../../../assets/guides/hubspot-plunet/complete-bird.png)
+![Complete bird](~/assets/guides/hubspot-plunet/complete-bird.png)
 
 Congratulations! You have taken all the solution architect's steps in order to create a production ready bird!
 
@@ -146,7 +146,7 @@ Manual steps (after a company is created in Hubspot):
 
 Bird:
 
-![Complete bird](../../../assets/guides/hubspot-plunet/company-sync.png)
+![Complete bird](~/assets/guides/hubspot-plunet/company-sync.png)
 
 > The biggest difference between customers and contacts in Plunet is that contacts don't have text modules. Luckily they instead have an "external ID" property that we can use.
 

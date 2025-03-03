@@ -9,7 +9,7 @@ sidebar:
 
 XLIFF (XML Localization Interchange File Format) is the beacon of standardization in the language and localization industry, allowing for the seamless exchange of translation data. It organizes content into translation units, each comprising a source segment and its corresponding target translation.
 
-![Image of XLIFF](../../../assets/guides/xliff/ImageOfXliff.png)
+![Image of XLIFF](~/assets/guides/xliff/ImageOfXliff.png)
 
 While most Translation Management Systems (TMS) and Computer-Assisted Translation (CAT) tools effortlessly handle XLIFF files, some other tools may not be as file-friendly. However, in the realm of Blackbird, where interoperability reigns supreme, we've unfurled new wings—er, actions—to make XLIFFs soar even in non-file-friendly apps.
 
@@ -64,9 +64,9 @@ Our [ModernMT](https://docs.blackbird.io/apps/modernmt/) app has also been adapt
 
 Our newest Blackbird actions allow for a bird's-eye view of your XLIFF's quality. By calculating the quality score of each segment within the XLIFF and returning an aggregated number that gives us an idea of the overall quality in the file. This was previously reserved for single segments only. Additionally, all translation units get appeneded with their individual score which is added to the extradata attribute in the XLIFF file.
 
-![Average Scores as output](../../../assets/guides/xliff/AverageScore.png)
+![Average Scores as output](~/assets/guides/xliff/AverageScore.png)
 
-![Image of extradata and scores](../../../assets/guides/xliff/Imageofextradataandscores.png)
+![Image of extradata and scores](~/assets/guides/xliff/Imageofextradataandscores.png)
 
 Optionally, Threshold, New Target State and Condition input parameters can be set to the Blackbird action to change the target state value of segments meeting the desired criteria. This means that you can signal properly translated segments and block them when importing the XLIFF file into a TMS for human revision, saving time and money and focusing efforts in those segments that actually need editing.
 
@@ -74,12 +74,12 @@ Example
 
 Setting the optional input values as shown in the image below will result in all segments with a score above 0.9 to have their target state values updated to “final”. When importing these XLIFF files into TMS tools, a setting can be usually added to lock segments with a specific target value ("final" in this case), so that translators can focus on and edit only the segments of lower quality.
 
-![Optional Input](../../../assets/guides/xliff/optionalinput.png)
+![Optional Input](~/assets/guides/xliff/optionalinput.png)
 
-![Updated Target State](../../../assets/guides/xliff/UpdatedTargetState.png)
+![Updated Target State](~/assets/guides/xliff/UpdatedTargetState.png)
 
 ## Behold, a majestic bird in action!
 
 While the new actions on its own add great value and enable new possibilities, when chained, they become even more powerful. Below is an example bird that takes a .docx file as input, the file is then converted into XLIFF for interoperability purposes, OpenAI is then used to translate the file into the target language. After this, TAUS is used to determine the quality of said translations and a decision operator is used to define the next steps for the file: if the average quality score is above the defined 0.95 threshold, the XLIFF is then converted into a translated .docx and delivered as final. Otherwise, if the average score is below 0.95, the file is imported into a TMS for further human editing. This ensures that only files that actually need a human in the loop are uploaded into the TMS, while quality translations are immediately delivered back.
 
-![screenshot of bird](../../../assets/guides/xliff/XliffSampleBird.png)
+![screenshot of bird](~/assets/guides/xliff/XliffSampleBird.png)
