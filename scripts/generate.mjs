@@ -71,7 +71,8 @@ const altered_names = {
   Utilities: "Blackbird Utilities",
   RePurpose: "Blackbird Repurpose",
   AdobeExperienceManager: "Adobe Experience Manager",
-  Blackbird: "Blackbird Service API"
+  Blackbird: "Blackbird Service API",
+  PhraseStrings: "Phrase Strings",
 };
 
 const skip_repos = ["docs", "template-repo", "NotionOAuth", "LanguageWire", "CraftCMS"];

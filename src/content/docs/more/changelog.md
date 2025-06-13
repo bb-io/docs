@@ -2,6 +2,33 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (13-06-2025) 4.26
+Main features: Smaller Bird editor quality of life, numerous bug fixes and small patches
+
+##### Bird editor
+- When going to the "Create new Bird page". The Manual trigger will always be preselected.
+- The default polling interval is now 5 minutes.
+- Dropdown items now display a tooltip to help display longer item names.
+- The ‘poll now button’ tooltip does not get stuck anymore
+
+##### Flight page
+- The word hyphenation in the Flight page was displayed in the middle of the word. This is now fixed.
+- Fixed a bug where a Flights was in the “waiting state” too long.
+- Fixed a small bug in the Flight list infinite scroll.
+- Fixed some bugs where loop iterations were incorrectly displayed on the Flight page in certain nesting cases.
+
+##### Bug fixes
+- Fixed a bug where a Flight would sometimes get stuck at a Checkpoint.
+- Arrays of objects that contain arrays are now properly handled.
+- The loading animation Birds are now properly flying through the air instead of thwarting the laws of physics and hanging still for Safari users.
+- Opening a URL without a nest now properly redirects you
+- Reloading a page on the organization management menu now doesn’t redirect you to the home page anymore.
+- The scrollbar in the Connection menu is behaving as you would expect now.
+- A little hole in our bucket - some bucketing events not registering properly in rare cases - has been fixed.
+
+##### Other
+- Public apps cannot be removed/edited/added anymore, so this permission was redundant and is now removed.
+
 ### (28-05-2025) 4.25
 Main features: Flight performance improvement
 
