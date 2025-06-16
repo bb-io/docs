@@ -51,7 +51,7 @@ const altered_names = {
   UnbabelProjects: "Unbabel Projects",
   AIUtilities: "Blackbird Prompts",
   ContentQuo: "ContentQuo Evaluate",
-  GoogleVertexAI: "Google Vertex AI",
+  GoogleVertexAI: "Google Gemini AI",
   Rss: "RSS API",
   GlobalLinkNow: "GlobalLink Now",
   BWX: "Bureau Works",
