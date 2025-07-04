@@ -59,6 +59,7 @@ Before you can connect you need to make sure that:
 ## Events
 
 - **On projects created**. Polling event that periodically checks for new projects. If a new projects are found, it will return the new projects.
+- **On projects status changed**. Polling event that periodically checks for projects with updated statuses. It will return projects that match your criteria.
 - **On project status changed**. Polling event that periodically checks for project status changes. If a project status changes, it will return the project with the new status.
 - **On task status changed**. Polling event that periodically checks for new tasks. If a new tasks are found, it will return the new tasks.
 - **On users created**. Polling event that periodically checks for new users. If a new users are found, it will return the new users.

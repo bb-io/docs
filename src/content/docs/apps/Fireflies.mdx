@@ -6,15 +6,15 @@ import { LinkCard } from "@astrojs/starlight/components";
 
 <LinkCard title="View on Github" target="_blank" href="https://github.com/bb-io/Fireflies" icon="github" />
 
-The Fireflies is a powerful interface designed to provide you with efficient and flexible access to your data. This API allows you to retrieve exactly the data you need in a structured format
+Fireflies.ai makes it seamless to capture voice conversations. This app allows you to retrieve exactly the data you need in a structured format and use it in your workflows. You can automate tasks such as summarizing meeting notes, translating them, and distributing them across various platforms.
 
 
 ## Before setting up
 
-- Log in to your account at [app.fireflies.ai](https://app.fireflies.ai/)
-- Navigate to the [Integrations](https://app.fireflies.ai/integrations) section
-- Click on [Fireflies API](https://app.fireflies.ai/integrations/custom/fireflies)
-- Copy and store your API key securely
+- Log in to your account at [app.fireflies.ai](https://app.fireflies.ai/).
+- Open [Settings](https://app.fireflies.ai/settings) from the left sidebar.
+- Navigate to [Fireflies API](https://app.fireflies.ai/settings#DeveloperSettings) section.
+- Copy your API key.
 
 ## Connecting
 
@@ -22,17 +22,17 @@ The Fireflies is a powerful interface designed to provide you with efficient and
 2. Click _Add Connection_.
 3. Name your connection for future reference e.g. 'My Fireflies'.
 4. Fill in the 'API token' obtained earlier.
-5. Click _Connect_
+5. Click _Connect_.
 
 ## Actions
 
 ### Transcription
 
-- **Get Transcription** Gets transcription and returns general info and JSON file with sentences
+- **Get Transcription** Returns call general information, full transcription, and a detailed sentence data as json file.
 
 ### Events
 
-- **On transcription completed** triggers when transcription is completed
+- **On transcription completed** Starts a flight when transcription is competed. It has optional inputs to filter out desired transcriptions. Returns general information and full transcription of each new matching transcription.
 
 ## Examples
 
