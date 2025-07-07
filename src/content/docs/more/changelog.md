@@ -2,6 +2,29 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (04-07-2025) 4.27
+Main features: Blueprints, reworked Bird overview page and reworked App details page
+
+##### Blueprints
+You can now browse through Blueprints that the Blackbird team has created for you. You can search for Blueprints by apps and select one. After selecting the Apps you want to use in your Blueprint, a Bird is created for you to get started with.
+
+##### Bird overview page
+- Changed Bird overview page to a table layout.
+- Added improved search capability, including hotkeys.
+- Added a visualization of App icons that are used in each Bird.
+- Added the ability to create Collections, groups of Birds within the same nest.
+
+##### App details page
+- Added groupings within actions and events for better organization.
+- Added Blueprints tab to browse Blueprints related to this app.
+- Improved the page layout.
+
+##### Bug fixes
+- Emails are now properly delivered to email addresses containing underscores (_).
+- Publishing of Birds now does not fail anymore when you change a scheduled trigger to a manual/event trigger.
+- "Ghost flights", flights that were started due to older and outdated scheduled triggers do not occur anymore.
+
+
 ### (13-06-2025) 4.26
 Main features: Smaller Bird editor quality of life, numerous bug fixes and small patches
 
