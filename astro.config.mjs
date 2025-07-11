@@ -40,6 +40,10 @@ export default defineConfig({
           autogenerate: { directory: "guides" },
         },
         {
+          label: "Blueprints",
+          autogenerate: { directory: "blueprints" },
+        },
+        {
           label: "SDK",
           autogenerate: { directory: "sdk" },
         },
