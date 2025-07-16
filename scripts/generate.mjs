@@ -70,9 +70,10 @@ const altered_names = {
   MemoQResources: "MemoQ Resources",
   Utilities: "Blackbird Utilities",
   RePurpose: "Blackbird Repurpose",
-  AdobeExperienceManager: "Adobe Experience Manager",
+  AdobeExperienceManager: "AEM",
   Blackbird: "Blackbird Service API",
   PhraseStrings: "Phrase Strings",
+  AdobeExperienceManagerOnPremise: "AEM On Premise",
 };
 
 const skip_repos = ["docs", "template-repo", "NotionOAuth", "LanguageWire", "CraftCMS"];
