@@ -2,6 +2,19 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (17-07-2025) 4.28
+Main features: Bird editor flow design update
+
+##### Bird editor
+- The flow items in the Bird editor received a major visual overhaul improving readability.
+- Decision items and lines are now indicated in blue, while loop items and lines are indicated in yellow.
+- The order of decision items has been changed to True | False instead of False | True
+- If a decision has an empty branch, the full branch is centered under the decision instead.
+
+##### Bug fixes
+- Blueprints now show the right outputs of the used blueprinted actions in all cases.
+- The error message column in the App Connection list is now correctly updated after the user updates a connection.
+
 ### (04-07-2025) 4.27
 Main features: Blueprints, reworked Bird overview page and reworked App details page
 
