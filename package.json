@@ -12,6 +12,7 @@
     "bin": "node --experimental-modules scripts/bin.mjs"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.5.6",
     "@astrojs/starlight": "^0.25.1",
     "astro": "4.11.5",
     "sharp": "^0.33.4",
