@@ -70,7 +70,7 @@ const altered_names = {
   MemoQResources: "MemoQ Resources",
   Utilities: "Blackbird Utilities",
   RePurpose: "Blackbird Repurpose",
-  AdobeExperienceManager: "AEM",
+  AdobeExperienceManager: "AEM Cloud",
   Blackbird: "Blackbird Service API",
   PhraseStrings: "Phrase Strings",
   AdobeExperienceManagerOnPremise: "AEM On Premise",
