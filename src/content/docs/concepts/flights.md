@@ -26,11 +26,11 @@ You can watch a flight in real time as a _bird flies_ through the steps of your 
 
 ![live bird](~/assets/docs/live-bird.gif)
 
-## Parallel flights
+## Parallel Action limit
 
-While a Bird can produce an unlimited number of flights, we’ve introduced a limit on how many can fly in parallel. This does not affect the total number of executions or the amount of data processed, but it does control how many flights can start at the exact same time. If you trigger more flights than your subscription allows to run concurrently, the extra ones will queue up and execute as soon as capacity becomes available. You can monitor these queued flights using the `Waiting` filter in the _Flights_ tab. The parallel execution limits depend on your subscription: the Business plan and above allows for more concurrent Flights, and the Enterprise plan supports unlimited parallel executions if on a dedicated environment.
+While you can have an unlimited number of Flights flying, we’ve introduced a limit on how many Actions execute in parallel across all your Birds. This does not affect the total number of executions or the amount of data processed, neither does it cap the amount of Flights. If you trigger more Flights than Actions your subscription allows to run concurrently, Blackbird will schedule your Actions in a random order. That's why if you have a lot of Flights with heavy actions (f.e. LLM file processing) other Flights may take longer as the scheduler could be working on the heavy Actions. The parallel execution limits depend on your subscription: the Business plan and above allows for more concurrent Actions, and the Enterprise plan supports unlimited parallel executions if on a dedicated environment.
 
-> Flights awaiting a checkpoint don't count towards the parallel flights quota.
+> Flights awaiting a checkpoint don't count towards the parallel Actions quota.
 
 Filter flights by status
 ![live bird](~/assets/docs/waiting-filter.png)
