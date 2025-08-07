@@ -2,6 +2,16 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (24-07-2025) 4.29
+Main features: Bird editor header rework
+
+##### Bird editor
+- The header of the Bird editor had its visual appearance changed in preparation for other Bird editor features.
+
+##### Other
+- Blueprints are now front-end cached for an optimized UX
+- The error messages returned from the Blackbird API (and thus also the Blackbird Services App) have been updated to match the UI.
+
 ### (17-07-2025) 4.28
 Main features: Bird editor flow design update
 
