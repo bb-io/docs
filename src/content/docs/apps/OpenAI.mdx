@@ -6,7 +6,7 @@ import { LinkCard } from "@astrojs/starlight/components";
 
 <LinkCard title="View on Github" target="_blank" href="https://github.com/bb-io/OpenAI" icon="github" />
 
-This OpenAI app in Blackbird grants you access to all API endpoints and models that OpenAI has to offer from completion, chat, edit to DALL-E image generation and Whisper.
+This OpenAI app in Blackbird grants you access to all API endpoints and models that OpenAI has to offer from completion, chat, edit to DALL-E image generation and Whisper. The app supports all models available in the OpenAI API, including the latest models like gpt-5, gpt-5-nano, gpt-4.1, o3
 
 ## Before setting up
 
@@ -38,6 +38,7 @@ All textual actions have the following optional input values in order to modify 
 - top_p
 - Presence penalty
 - Frequency penalty
+- Reasoning effort
 
 For more in-depth information about most actions consult the [OpenAI API reference](https://platform.openai.com/docs/api-reference).
 
@@ -176,10 +177,6 @@ Here is an example bird for processing XLIFF files:
 - **Get MQM dimension values from XLIFF** Performs an LQA Analysis of a translated XLIFF file. The result will be in the MQM framework form. This action only returns the scores (between 1 and 10) of each dimension.
 - **Get MQM report from XLIFF** Performs an LQA Analysis of the translated XLIFF file. The result will be in the MQM framework form.
 - **Get translation issues from XLIFF** Reviews the translated XLIFF file and generate a comment with the issue description
-
-### Selecing a model
-
-For most actions we show the default "Model" dropdown with the most popular models visible. Do you need to use another model? Use the "Advanced model" optional input. This value has more options and will overwrite the base model if selected.
 
 ### Bucket size, performance and cost
 
