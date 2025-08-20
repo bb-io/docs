@@ -2,6 +2,21 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (12-08-2025) 4.30
+Main features: New Bird editor add item modal
+
+##### Bird editor
+- When adding a new item to a Bird, a new modal appears that provides searchable actions, events and operators. Hotkeys can be used to navigate through and the search field will search through all available actions, checkpoints, etc. Apps that were used in the Bird already will rank higher.
+
+##### Other
+- Improvements to the stability of the key vault service were made, this will result in less to no false negative authorization requests.
+- The Bird overview page now also loads quickly even if your Birds are very large.
+
+##### Bug fixes
+- Nested variables are now also shown in the Bird editor when selecting inputs in arrays or multiple inputs.
+- Exceptionally large Birds will not time-out anymore when saving.
+- Actions using the large file downloading protocol will now not falsely appear as "Flying" even when they are done.
+
 ### (24-07-2025) 4.29
 Main features: Bird editor header rework
 
