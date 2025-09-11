@@ -2,6 +2,26 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (11-09-2025) 4.31
+Main features: Bird editor closable panels, improved trigger UX, skip loop iteration
+
+##### Bird editor
+- The Bird trigger is now more configurable in the main view, rather than the side panel
+- In the trigger configuration, the event is now selectable through the new add item modal
+- A manual Bird can be flown from the trigger panel
+- All time selections (delay, scheduled, polling) have been revamped.
+- Most control flow cards in the Bird will now show inputted values, f.e. loops and decisions.
+- The end loop and end Flight cards have changed in appearance. The end Flight is now similar to the bottom "end" of the Bird indicating that this step is not necessary in most cases.
+- All item modals are now closable
+
+##### Flight page
+- The Flight page header design has been brought in line with the Bird editor, switching between the two is now a more seamless experience.
+
+##### Other
+- A loop now has the ability to enable "Skip iteration". When this is enabled, an error in a loop will not stop the entire Bird, but will just skip to the next itteration of the loop.
+- An optimistic update has been added when activating/suspending a Bird.
+- The scroll position of the Bird list is now saved when navigating back.
+
 ### (12-08-2025) 4.30
 Main features: New Bird editor add item modal
 
