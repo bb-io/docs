@@ -2,6 +2,22 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (10-10-2025) 4.32
+Main features: Retrigger Flights, multiple connection types, mass connection updating
+
+##### Bird editor
+- When adding an action, event or checkpoint, Blackbird will automatically select a connection and fill it in. If this is the first item for an App in a Bird it will select the first available connection, otherwise it will look at previous items and use the same connection.
+- When creating a Bird from a Blueprint, connections are similarly automatically filled in.
+- When changing a connection of a particular action or event, the Bird editor will prompt you if you want to change _all_ actions/events that are related to the same app. This significantly speeds up the amount of things one needs to do when creating a new connection or cloning a Bird for a different instance.
+
+##### Flight page
+- A new button _Fly again_ has appeared next to a Flight name if the Flight was triggered from an event.
+- By clicking the _Fly again_ button, a new Flight will start using the latest published Bird version but replaying the Flight's event. This is excelent for quickly resolving issues in Flights without having to go into other systems to retrigger these Flights.
+- The _Fly again_ button will not be available if the trigger has changed in the latest published Bird version.
+
+##### Other
+- We gave ourselves the possibility to define different connection types for the same App. Now we will be able to support different connection mechanisms with the same underlying API. You will for example be able to choose whether to use OAuth or a key/token connection method. It also allows us to unify certain LLM Apps as it's often the case that the same model is hosted on different cloud providers (OpenAI native, Azure OpenAI, Amazon Bedrock, etc.).
+
 ### (11-09-2025) 4.31
 Main features: Bird editor closable panels, improved trigger UX, skip loop iteration
 
