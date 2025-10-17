@@ -72,7 +72,7 @@ This free app provides generic utility actions that can come in useful in any bi
 - **Redefine CSV columns** Rearrange the columns of a CSV file according to the specified order. 0 being the first column. A value of [1, 1, 2] would indicate that there are 3 columns in the new CSV file. The first two columns would have the value of the original column 1, the third column would have original column 2.
 - **Apply regex to CSV column** Apply a regex pattern to a specified column in the CSV file.
 - **Apply regex to CSV row** Apply a regex pattern to a specified row in the CSV file.
-- **Add CSV row** Add a new row at the specified row index to the CSV file
+- **Add CSV row** Add a new row at the specified row index to the CSV file. If no index is specified, the new row will be added after the last one.
 - **Get CSV rows** Read a CSV file and return its rows, where each row is a list of cell values.
 - **Get CSV column values** Retrieve all values from a specified column in the CSV file.
 
@@ -100,12 +100,14 @@ This free app provides generic utility actions that can come in useful in any bi
 - **Calculate BLEU Score** Metric used to evaluate the quality of machine-translated text by comparing it to a referenced text.
 - **Split string into array** Splits a string into an array using the specified delimiter.
 - **Count words in texts** Returns number of words in text from array. 
+- **Convert text to lower case** Returns the lower case version of the input text
 - **Generate random text** Returns a random text of variable length and characters used. Default length is 10 and default characters are A-Z, a-z and 0-9.
   
 ### JSON
 
 - **Get JSON property value** Get JSON property value.
 - **Change JSON property value** Changes the JSON property value.
+- **Get JSON array property values** Returns all elements under a JSON array property as text list
 
 
 ### Arrays
