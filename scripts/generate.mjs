@@ -64,6 +64,7 @@ const altered_names = {
   "XTRF-Customer-portal": "XTRF Customer Portal",
   "X.AI": "xAI",
   SitecoreXmCloud: "Sitecore XM Cloud",
+  SitecoreGraphQl: "Sitecore (Graph QL)",
   SitecoreXp: "Sitecore XP",
   Sitecore: "Sitecore XP",
   PhraseLanguageAI: "Phrase Language AI",
