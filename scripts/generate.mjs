@@ -24,6 +24,7 @@ const altered_names = {
   AmazonWorkDocs: "Amazon WorkDocs",
   AmazonTextract: "Amazon Textract",
   AmazonS3: "Amazon S3",
+  JiraDataCenter: "Jira Data Center",
   MicrosoftSharePoint: "Microsoft SharePoint",
   AmazonPolly: "Amazon Polly",
   GoogleAnalytics: "Google Analytics",
