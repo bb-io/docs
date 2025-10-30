@@ -2,6 +2,18 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (30-10-2025) 4.33
+Main features: File/folder picker
+
+##### Bird editor
+- Actions or events that require an item input where the item is part of a hierarchical (folder) structure will now allow the user to navigate through the App's hierarchical folder structure in order to more easily and intuitively select these values.
+
+##### Bug fixes
+- Fixed an issue where the outdated URL was shown for callback-type event Birds in some cases.
+- Fixed an issue where this URL was also not shown after reactivating the Bird.
+- Fixed several edge cases of incorrect optimistic updates in the front-end.
+- Fixed an issue where a Bird would not publish if it contained 2 identical loops which use the same inputs and steps inside the loop.
+
 ### (10-10-2025) 4.32
 Main features: Retrigger Flights, multiple connection types, mass connection updating
 
