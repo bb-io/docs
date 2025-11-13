@@ -44,6 +44,10 @@ export default defineConfig({
           autogenerate: { directory: "blueprints" },
         },
         {
+          label: "Blacklake",
+          autogenerate: { directory: "blacklake" },
+        },
+        {
           label: "SDK",
           autogenerate: { directory: "sdk" },
         },
