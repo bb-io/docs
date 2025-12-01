@@ -2,6 +2,26 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (27-11-2025) 4.34
+Main features: Input/filters rework
+
+##### Bird editor
+- The Connection and Input tab on the item settings modal has been merged to a single tab called _Settings_.
+- Inputs have been completely redesigned. Required and Advanced inputs are now all visible.
+- Simple inputs (booleans, numbers) have received an improved UX to set them with less clicks.
+- Dropdowns of selectable values have received a modal update giving options from previous actions and App related values more space.
+- Actions/Events can now be changed by clicking on the name in the modal or on "Change Action" in the options menu.
+
+##### Bug fixes
+- The correct error message is now displayed when something went wrong handling a file/folder picker request.
+- An optimistic update error has been fixed when suspending a Bird too quickly after creating it.
+- Fixed an error where the bucketing tab on events would not open in some cases.
+- Fixed an error where the after-subscription event was not triggered.
+- The _Fly again_ button is now correctly disabled after deleting a Bird.
+- Suspended Birds are now correctly kept suspended if the subscription fails.
+- After updating a Bird collection, the Bird list is now correctly updated.
+- The state and details of loops within decision branches are now displayed correctly in cases where a decision is added inside two loops and receives outputs from the parent loop or an inner loop that receives outputs from the parent loop (Yes a workflow editor is complex). 
+
 ### (30-10-2025) 4.33
 Main features: File/folder picker
 
