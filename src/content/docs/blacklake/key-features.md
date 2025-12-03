@@ -13,11 +13,11 @@ In modern workflows, content is dynamic—updated frequently based on product re
 
 Instead of relying on a TM as a static memory of how content used to be, Blacklake reflects how content is right now. Any change in a connected system can be aligned, diffed, and updated automatically in the Lake.
 
-### 2. Two fundamental actions: Apply and Add to Lake
+### 2. Two fundamental actions: Prepare Content and Store Content
 Blacklake intentionally keeps interaction simple. Everything revolves around two core actions.
 
-#### Apply Lake (Leverage)
-When you trigger the Apply Lake action, Blacklake:
+#### Prepare Content
+When you trigger the Prepare Content Action, Blacklake:
 1. Diffs the content first.
   Because most content already exists in the lake, Blacklake compares what you’re sending with what it already knows and pre-fills the parts that haven’t changed. Only new or updated units require further processing.
 2. Queries the entire lake for the most relevant linguistic data.
@@ -25,11 +25,12 @@ When you trigger the Apply Lake action, Blacklake:
     - “Prioritize content with the highest page views.”
     - “Use translations from legacy product docs, but only for this product line.”
     - “Exclude machine-generated content from suggestions.”
+3. Adds relevant linguistic assets.
 
 The result is context-aware leveraging far more powerful than classical fuzzy matching and more relevant than vector-based matching.
 
-#### Add to Lake (Commit)
-Unlike TMs—which only update during translation, Blacklake allows you to commit bilingual or monolingual content anytime. When you Commit:
+#### Store Content
+Unlike TMs—which only update during translation, Blacklake allows you to store bilingual or monolingual content anytime. When you store content:
 - Blacklake aligns updates using context IDs if they exist
 - Detects changes
 - Places translations or modifications in the correct location in the lake
@@ -49,7 +50,7 @@ This metadata can then be used to:
 It’s a flexible data model built for the reality of modern localization.
 
 ### 4. Linguistic asset storage and tracking
-The linguistic assets that define your content: style guides, terminology, keywords, intent, knowledge can be stored and managed in Blacklake. Whenever you use the "Apply Lake" action, Blacklake will also populate your context with relevant assets.
+The linguistic assets that define your content: style guides, terminology, keywords, intent, knowledge can be stored and managed in Blacklake. Whenever you use the "Prepare Content" Action, Blacklake will also populate your context with relevant assets.
 
 ### 5. Self-Hosted or Cloud Native
 Because Blacklake stores real linguistic data, some organizations need strict data control. Blacklake supports both a self-hosted deployment or a fully managed cloud deployment
