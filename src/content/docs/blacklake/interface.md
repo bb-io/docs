@@ -32,7 +32,7 @@ Clicking on a Variant allows you to inspect the Content of this particular Varia
 ![1763045810414](~/assets/blacklake/1763045810414.png)
 
 You edit the name and description of a Variant. You can also add additional codes, this is useful if your Variants are hosted accross different source systems that use different codes.
-You can also add Style guide rules here that will be added any time you use the "Apply Lake" Action in Blackbird.
+You can also add Style guide rules here that will be added any time you use the "Prepare Content" Action in Blackbird.
 
 ![1763045913976](~/assets/blacklake/1763045913976.png)
 

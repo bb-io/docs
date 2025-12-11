@@ -2,6 +2,27 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (11-12-2025) 4.35
+Main features: Improved deprecated item behavior & miscellaneous
+
+##### Bird editor
+- When changing a connection on an Action or Event, all dynamic inputs will also be cleared.
+- Items that have notes attached to it now show a small note icon on the item in the flow.
+- The "Add item modal" can now be navigated using the keyboard.
+- When updating an App to a new version, Actions or Events that no longer exist in the new version will now be shown as deprecated and they have to be changed by the user.
+- When an item is renamed, you can now hover over the name in the modal to see the old Action/Event name appear.
+
+##### Blueprints
+- The modal that opens when searching for Apps has received small tweaks inclding clearing the selection and seeing Apps grouped by connected and favorites.
+
+##### Other
+- We unified all placeholder copies for all searchbars
+
+##### Bug fixes
+- Publishing of a Bird now succeeds if a delay operator is also only partially filled in.
+- Fixed an issue where publishing would fail if an item's inputs become unavailable in the next item.
+- Fixed an issue where publishing would fail if the hours AND minutes were set in a scheduled trigger. (One can now only set hours or minutes until the release of the new engine.)
+
 ### (27-11-2025) 4.34
 Main features: Input/filters rework
 

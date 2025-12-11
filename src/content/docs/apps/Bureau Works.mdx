@@ -49,6 +49,7 @@ Before you can connect you need to make sure that:
 - **Get project**
 - **Search projects**
 - **Upload file to project**
+- **Export project as Loc kit**
 
 ### Glossary
 
