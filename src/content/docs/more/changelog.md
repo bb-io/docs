@@ -2,6 +2,23 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (30-12-2025) 4.36
+Main features: Unified global page layouts & miscellaneous
+
+##### Bird editor
+- The file folder picker has received hotkeys. You can now use your arrow keys, enter, backspace and escape to navigate this modal. Use Cmd/Ctrl +Option/Alt + R to refresh a folder.
+- We improved zooming and created a unified experiences across operating systems. Use Cmd/Ctrl + middle mouse scroll or Shift + arrow up/down to zoom in and out.
+
+##### Other
+- When a Bird fails to publish, a friendly error message will now show you the reason why.
+- The Apps, Birds, Flights and Libraries overview pages have received a layout update. Where before each page did its own thing, now all pages have a unified top bar, side bar and search experience.
+
+##### Bug fixes
+- We now properly show an input validation on decision steps when a previous item's output becomes unavailable.
+- Fixed the display of some variables on the inputs tab in the Flight view.
+- Added timezone information on the outputs tab in the Flight view.
+- Fixed an issue where the decision operator would fail if empty dates or numbers were passed to it.
+
 ### (11-12-2025) 4.35
 Main features: Improved deprecated item behavior & miscellaneous
 
