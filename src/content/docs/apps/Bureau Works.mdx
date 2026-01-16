@@ -50,6 +50,7 @@ Before you can connect you need to make sure that:
 - **Search projects**
 - **Upload file to project**
 - **Export project as Loc kit**
+- **Upload and import file to project resource**
 
 ### Glossary
 
