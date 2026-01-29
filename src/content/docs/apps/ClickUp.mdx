@@ -27,12 +27,12 @@ ClickUp project management software that allows you to plan, track and collabora
 
 ### Folders
 
-- **Get folders** returns all folders of a chosen `space`.
+- **Search folders** returns all folders of a chosen `space`.
 - **Get/create/delete folder**.
 
 ### Goals
 
-- **Get goals** returns all goals of specified `team`.
+- **Search goals** returns all goals of specified `team`.
 - **Get/create/delete goal**.
 - **Create key result** adds a `target` to a goal.
 
@@ -46,26 +46,26 @@ ClickUp project management software that allows you to plan, track and collabora
 
 ### Spaces
 
-- **Get spaces** returns all spaces of specified `team`.
+- **Search spaces** returns all spaces of specified `team`.
 - **Get/create/update/delete space**
 
 ### Tags
 
-- **List tags** returns all tags of specified `space`.
+- **Search tags** returns all tags of specified `space`.
 - **Create/delete tag**.
 
 ### Tasks
 
-- **Get tasks** returns all tasks of specified `list`.
+- **Search tasks** returns all tasks of specified `list`.
 - **Get/create/delete task**.
 
 ### Teams - Workspaces
 
-- **Get teams** returns all teams available to the authenticated user.
+- **Search teams** returns all teams available to the authenticated user.
 
 ### Teams - User Groups
 
-- **Get user groups** returns all user groups in the workspace.
+- **Search user groups** returns all user groups in the workspace.
 - **Create/delete user group**.
 
 ## Events

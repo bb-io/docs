@@ -68,6 +68,7 @@ const altered_names = {
   SitecoreXmCloud: "Sitecore XM Cloud",
   SitecoreGraphQl: "Sitecore (Graph QL)",
   SitecoreXp: "Sitecore XP",
+  SalesforceMarketingCloud: "Salesforce Marketing Cloud",
   Sitecore: "Sitecore XP",
   PhraseLanguageAI: "Phrase Language AI",
   MemoQResources: "MemoQ Resources",
