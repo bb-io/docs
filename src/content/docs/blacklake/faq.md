@@ -3,7 +3,7 @@ title: Blacklake FAQ
 description: Frequently asked questions regarding Blacklake
 sidebar:
   label: FAQ
-  order: 4
+  order: 5
   hidden: false
 ---
 > 💡 Blacklake is live in early access today for select Blackbird customers. If you're interested in participating in the next round of users then shoot us a message!
