@@ -105,7 +105,7 @@ await all_repos
 
       const docs_section = raw_readme.substring(
         raw_readme.indexOf(docs_comment_begin) + docs_comment_begin.length + 1,
-        raw_readme.lastIndexOf(docs_comment_end)
+        raw_readme.lastIndexOf(docs_comment_end),
       );
 
       if (!docs_section) return;
@@ -128,7 +128,7 @@ import { LinkCard } from "@astrojs/starlight/components";
         frontmatter +
         docs_section
           .replace(regex, (a, b) =>
-            a.replace(b, `https://raw.githubusercontent.com/bb-io/${name}/${default_branch}/${b}`)
+            a.replace(b, `https://raw.githubusercontent.com/bb-io/${name}/${default_branch}/${b}`),
           )
           .replace("</br>", "")
           .replace("<br>", "");
