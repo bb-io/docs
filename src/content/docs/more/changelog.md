@@ -2,6 +2,17 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (04-02-2026) 5.1
+Main features: Utilities in the core
+
+##### Bird editor
+- The Utilities App can now be found on the top level when you add a new item to a Bird.
+- The Utilities App does not need a connection anymore - as such, it's also not displayed anymore under Apps.
+- When opening an item input dropdown, the first dropdown item is now always preselected.
+
+##### Bug fixes
+- Various minor edge cases realted to the Unified global page layout
+
 ### (30-12-2025) 4.36
 Main features: Unified global page layouts & miscellaneous
 
