@@ -119,15 +119,22 @@ await all_repos
   description: The ${friendly_name} Blackbird app
 ---
 import { LinkCard } from "@astrojs/starlight/components";
+import { YouTube } from '@astro-community/astro-embed-youtube';
 
 <LinkCard title="View on Github" target="_blank" href="${html_url}" icon="github" />
 `;
 
-      const regex = /!\[[^\]]*\]\((?<filename>(?!http).*?)(?=\"|\))\)/g;
+      const regexImages = /!\[[^\]]*\]\((?<filename>(?!http).*?)(?=\"|\))\)/g;
+      const regexYouTube =
+        /\[\!\[[^\]]*\]\(https:\/\/img\.youtube\.com\/vi\/(?<id>[^\/]+)\/[^\)]*\)\]\(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)(?<id2>[^\)&]+)[^\)]*\)/g;
       const md_content =
         frontmatter +
         docs_section
-          .replace(regex, (a, b) =>
+          .replace(regexYouTube, (_, id, id2) => {
+            const videoId = id || id2;
+            return `<YouTube id="https://youtu.be/${videoId}" />`;
+          })
+          .replace(regexImages, (a, b) =>
             a.replace(b, `https://raw.githubusercontent.com/bb-io/${name}/${default_branch}/${b}`),
           )
           .replace("</br>", "")
