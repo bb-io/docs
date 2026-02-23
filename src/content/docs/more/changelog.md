@@ -2,6 +2,17 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (23-02-2026) 5.2
+Main features: Input suggestions
+
+##### Bird editor
+- When a new Action or Checkpoint, Blackbird will look at the required inputs and try to match/suggest outputs from previous items to use.
+  - If there is only one matching output, it's automatically filled in.
+  - If there are more, you can see them in the "Suggestions" box when setting the input.
+
+##### Bug fixes
+- A friendlier error message is now shown in certain cases when fetching input values in a dropdown.
+
 ### (04-02-2026) 5.1
 Main features: Utilities in the core
 
