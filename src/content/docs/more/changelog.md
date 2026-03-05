@@ -2,6 +2,17 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (05-03-2026) 5.3
+Main features: Documentation in the App
+
+##### Other
+- The dedicated App pages in Blackbird now feature a documentation section which shares its content with the equivalent pages on https://docs.blackbird.io/. They also feature a handy link to the open source Github repositories.
+
+##### Bug fixes
+- Fixed an issue where the input suggestions would suggest an array of objects instead of its contents.
+- Items are now properly preserved in loop and array inputs when the type of the input changes due to some elements being removed.
+- Fixed an issue where Apps were not visible on the Birds overview page for manual Birds in some cases.
+
 ### (23-02-2026) 5.2
 Main features: Input suggestions
 

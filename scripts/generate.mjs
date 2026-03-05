@@ -78,7 +78,7 @@ const altered_names = {
   Blackbird: "Blackbird Service API",
   PhraseStrings: "Phrase Strings",
   AdobeWorkfront: "Adobe Workfront",
-  Pantheon: "welocalize Pantheon"
+  Pantheon: "Welocalize Pantheon",
 };
 
 const skip_repos = ["docs", "template-repo", "NotionOAuth", "LanguageWire", "CraftCMS"];
