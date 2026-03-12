@@ -6,7 +6,7 @@ sidebar:
   order: 1
   hidden: false
 ---
-> 💡 Blacklake is live in early access today for select Blackbird customers. If you're interested in participating in the next round of users then shoot us a message!
+> 💡 You can try Blacklake today. Contact us if you want to participate.
 
 Blacklake is a modern linguistic data platform designed for today’s continuous, multi-system content environment. It's built for teams who create, translate, and manage dynamic, multi-channel content. In a world where content changes daily across CMSs, code repositories, product interfaces, knowledge bases, and global markets, the tools of the 1980s can’t keep up.
 

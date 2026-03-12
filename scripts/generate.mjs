@@ -79,6 +79,7 @@ const altered_names = {
   PhraseStrings: "Phrase Strings",
   AdobeWorkfront: "Adobe Workfront",
   Pantheon: "Welocalize Pantheon",
+  WelocalizeOpal: "Welocalize Opal",
 };
 
 const skip_repos = ["docs", "template-repo", "NotionOAuth", "LanguageWire", "CraftCMS"];

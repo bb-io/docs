@@ -6,7 +6,7 @@ sidebar:
   order: 3
   hidden: false
 ---
-> 💡 Blacklake is live in early access today for select Blackbird customers. If you're interested in participating in the next round of users then shoot us a message!
+> 💡 You can try Blacklake today. Contact us if you want to participate.
 
 This guide assumes you understand the Blacklake [Key Features](../key-features). See the [Blacklake App](../../apps/blacklake) on how Blacklake can be put to work in Birds.
 
@@ -53,6 +53,16 @@ Clicking on a text unit will open more information about this unit. Here you can
 ![1763046358905](~/assets/blacklake/1763046358905.png)
 
 In this example we can see how a unit was first created by a certain tool without any review or quality attached. Later someone made an edit to this particular unit *in-context*, meaning in the actual tool this content is stored!
+
+### Managing Strategies
+
+The Strategies menu is where you define reusable leverage policies for the `Prepare Content` action.
+
+A strategy determines which units in the lake are eligible for reuse. You can configure whether Blacklake should diff content before leveraging, whether only human-translated or human-reviewed units should match, and how timestamps, systems, tools, translators, and metadata should influence the candidate pool.
+
+This makes it possible to create different governance rules for different workflows, such as strict reviewed-content strategies for production and broader cost-optimized strategies for operational flows.
+
+See the dedicated [Strategies guide](../strategies) for a full explanation of each setting and example patterns.
 
 ### Managing Metadata
 

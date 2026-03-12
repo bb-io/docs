@@ -6,7 +6,7 @@ sidebar:
   order: 4
   hidden: false
 ---
-> 💡 Blacklake is live in early access today for select Blackbird customers. If you're interested in participating in the next round of users then shoot us a message!
+> 💡 You can try Blacklake today. Contact us if you want to participate.
 
 Blacklake can be introduced into your translation stack incrementally, or you can choose to import all existing translations from your CMS immediatly getting all the benefit of Blacklake. In technical terms, this is done through a process called 'Alignment'. You can use Blackbird to dictate what content can and should be imported.
 
