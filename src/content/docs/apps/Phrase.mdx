@@ -75,6 +75,7 @@ Navigate to apps and search for Phrase. Click _Add Connection_ and name your con
 - **Delete conversation** Delete a plain conversation.
 - **Edit conversation** Edit a plain conversation.
 - **Create conversation** Create a plain conversation.
+- **Create LQA conversation** Create an LQA conversation.
 - **Add plain comment** Add a plain comment.
 - **Edit plain comment** Edit a plain comment.
 - **Delete plain comment** Delete a plain comment.
@@ -120,6 +121,7 @@ Custom fields are associated with a specific type, for example date, number, or 
 - **Upload job target file** Upload and update the target file of a job.
 - **Download job bilingual file** Download the bilingual file of a job.
 - **Upload job bilingual file** Upload a bilingual file to update a job.
+- **Lock segments from MXLIFF** Copy locked segment IDs from an input MXLIFF file to a specific job by downloading that job's bilingual file, applying the same locks, and re-importing it.
 - **Pre-translate job** Pre-translate a job in a project.
 - **Upload job source file** Upload and update the source file of a job in a project.
 - **Get segments count** Get segment counts for a specific job.
@@ -169,6 +171,8 @@ Custom fields are associated with a specific type, for example date, number, or 
 
 - **Download LQA assessment** Download a single LQA report for a specific job ID.
 - **Get LQA assessment** Get a specific LQA assessment.
+- **Start LQA assessment** Start LQA assessment for a specific job part.
+- **Finish LQA assessment** Finish LQA assessment for a specific job part.
 - **Run auto LQA** Run auto LQA for specific job parts or all jobs in a workflow step.
 - **Run quality assurance** Run quality checks on a job part.
   Advanced settings:
@@ -233,7 +237,7 @@ Custom fields are associated with a specific type, for example date, number, or 
   - **Project name doesn't contains**: Exclude projects where the name contains a specific text.
   - **Project note contains**: Trigger only when the project note contains a specific text.
   - **Project note doesn't contain**: Exclude projects where the project note contains a specific text.
-- **On all jobs in workflow step reached status** Triggered when all jobs in a specific workflow step reach any specified statuses and outputs only jobs in that workflow step.
+- **On all jobs in workflow step reached status** Triggered when all jobs in a specific workflow step reach any specified statuses and outputs only jobs in that workflow step. Either Workflow level or workflow step needs to be provided.
   Advanced settings:
   - **Target language**: Restrict the trigger to a specific target language.
 - **On job target updated** Triggered when a job target is updated.
@@ -272,6 +276,18 @@ Here's an example to demonstrate this feature between the Phrase and XTRF apps:
 ![phrase-xtrf-2](https://raw.githubusercontent.com/bb-io/Phrase-TMS/main/image/README/phrase-xtrf-2.png)
 
 ![phrase-xtrf-2](https://raw.githubusercontent.com/bb-io/Phrase-TMS/main/image/README/phrase-xtrf-3.png)
+
+### Propagate locked segments to another workflow step
+
+Use **Lock segments from MXLIFF** when you need a later job or workflow step to inherit the locked segments from an earlier Phrase MXLIFF file.
+
+Typical flow:
+
+1. Download or otherwise obtain the source MXLIFF from the earlier workflow step.
+2. Run **Lock segments from MXLIFF** with that bilingual file plus the destination Project ID and Job ID.
+3. The action reads all locked translation unit IDs from the source MXLIFF, downloads the destination job's bilingual file, applies the same locked IDs there, and uploads the updated bilingual file back to Phrase.
+
+This is especially useful in continuous projects where locked status does not automatically propagate to the next workflow step.
 
 ## Missing features
 
