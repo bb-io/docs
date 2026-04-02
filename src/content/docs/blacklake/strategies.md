@@ -47,7 +47,7 @@ When Blacklake prepares content, it can:
 
 So a strategy does not just filter results after the fact. It determines the candidate pool that Blacklake is allowed to leverage from.
 
-![Strategies editor](~/assets/blacklake/1773333922881.png)
+![Strategies editor](~/assets/blacklake/1775124318002.png)
 
 ### Core settings
 
