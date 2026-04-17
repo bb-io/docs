@@ -2,6 +2,16 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (10-04-2026) 5.4
+Main features: multiple decisions
+
+##### Bird editor
+- The decision is no longer a binary true/false. We've added the ability to add multiple conditions that the decision step will match.
+  - Each condition is evaluated in order, if the condition evaluates to true, the Flight continues through that branch.
+  - The otherwise branch is always there and picked by the Flight if no condition evaluates to true.
+- The "Is null" selectable decision has been renamed to "Has no data" to be more aligned with Blackbird terminology
+- The "Is empty" selectable decision has been renamed to "Is empty or has no data" and will now evaluate to true if the content is indeed empty or has no data.
+
 ### (05-03-2026) 5.3
 Main features: Documentation in the App
 

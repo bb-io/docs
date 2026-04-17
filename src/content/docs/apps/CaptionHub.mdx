@@ -51,6 +51,7 @@ CaptionHub is a cloud-based platform that provided services related to video cap
 
 ### Projects
 
+- **Search projects** returns projects matching the selected filters.
 - **Get/create/update/delete project**
 - **Replace the video for a project** replaces the original video for a project.
 
