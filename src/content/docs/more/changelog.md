@@ -2,6 +2,16 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (21-04-2026) 5.5
+Main features: drag & drop on arrays and conditions
+
+##### Bird editor
+- Items in an array can now be reordered by clicking and dragging using the array index as the handle.
+- Conditions in multiple decisions can now be reordered by clicking and dragging the handle icon.
+- Input values are not automatically trimmed anymore. Spaces as input values are now possible.
+- Required textfields and arrays are now always open and cannot be removed.
+- Improved the consistent use of the word "Value" for generic outputs, rather than "Result".
+
 ### (10-04-2026) 5.4
 Main features: multiple decisions
 
