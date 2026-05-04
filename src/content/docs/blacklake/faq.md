@@ -3,7 +3,7 @@ title: Blacklake FAQ
 description: Frequently asked questions regarding Blacklake
 sidebar:
   label: FAQ
-  order: 6
+  order: 8
   hidden: false
 ---
 > 💡 You can try Blacklake today. Contact us if you want to participate.

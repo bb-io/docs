@@ -3,7 +3,7 @@ title: Next Steps
 description: How to get started with Blacklake
 sidebar:
   label: Next Steps
-  order: 7
+  order: 9
   hidden: false
 ---
 > 💡 You can try Blacklake today. Contact us if you want to participate.

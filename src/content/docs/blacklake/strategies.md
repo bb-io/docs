@@ -3,7 +3,7 @@ title: Strategies
 description: Define how Blacklake should leverage content during preparation
 sidebar:
   label: Strategies
-  order: 5
+  order: 7
   hidden: false
 ---
 > 💡 You can try Blacklake today. Contact us if you want to participate.
@@ -138,9 +138,9 @@ These fields let you include or exclude specific translators, reviewers, vendors
 
 This is useful when some people or partners are approved for a workflow and others should be kept out of the leverage pool.
 
-### Metadata filters
+### Custom Metadata filters
 
-Strategies can also filter on Blacklake metadata.
+Strategies can also filter on [Blacklake metadata](../metadata).
 
 This is where leveraging becomes programmable rather than generic. Instead of saying "reuse everything that matches," you can say:
 
