@@ -82,6 +82,14 @@ This is useful for cases such as gathering downloaded files and sending them tog
 
 One important detail: if a loop is iterating over an array, updating that same array during the loop does not change the loop itself. The loop keeps using the array structure that existed when the loop started.
 
+## Variables on the Flight page
+
+When inspecting your Flights, you will find that the `Update Variable` operator gives you a lot of information about what's happening. Namely, which variable was changed, what the old value was and what the new value is.
+
+![1778082346907](image/variables/1778082346907.png)
+
+Remember that the icon in front of the variable will always indicate what the type is. `Text`, `Number`, `Date`, `Boolean`, or `File`.
+
 ## Practical examples
 
 Here are a few common use cases for variables:
