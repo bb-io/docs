@@ -2,6 +2,19 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (06-05-2026) 5.6
+Main features: create & update variables
+
+##### Bird editor
+- The create & update variable operators have appeared.
+  - When creating a variable, you can select a type, ordinality and intial value of a variable. This variable can be reused throughout your Bird
+  - You can update a variable at any point in your Bird (including in loops and decisions!). Updating a variable will overwrite it.
+- The old compose operator was removed, and migrated to the create variable operator for existing Birds.
+
+##### Bug fixes
+- Drag & drop of items now works if the item is dragged downward and the last item is of smaller height.
+- Composed values now correctly update the step name when the name is changed.
+
 ### (21-04-2026) 5.5
 Main features: drag & drop on arrays and conditions
 

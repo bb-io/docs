@@ -3,7 +3,7 @@ title: The Toolbox - Different Helpers to Ease Your Flights
 description: In this guide, we will go through different actions within Blackbird's pre-built apps that will help with data extraction or transformation, many times a must for your workflows.
 sidebar:
   label: The Toolbox
-  order: 6
+  order: 7
   hidden: false
 ---
 

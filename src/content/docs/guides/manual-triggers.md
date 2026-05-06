@@ -3,7 +3,7 @@ title: Manual Push Use Cases
 description: Different use cases where triggering your Birds manually makes total sense
 sidebar:
   label: Manual Push
-  order: 10
+  order: 1
   hidden: false
 ---
 

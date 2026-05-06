@@ -3,7 +3,7 @@ title: SSO
 description: Streamline Your Authentication with Single Sign-On (SSO) Integration
 sidebar:
   label: SSO
-  order: 8
+  order: 9
   hidden: false
 ---
 
