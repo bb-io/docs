@@ -16,5 +16,5 @@ These are the IP addresses to whitelist in order to allow Blackbird to connect t
 - 4.152.142.130
 
 **US-2**
-20.65.57.255
-20.161.220.188
+- 20.65.57.255
+- 20.161.220.188
