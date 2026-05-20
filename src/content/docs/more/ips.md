@@ -10,11 +10,11 @@ These are the IP addresses to whitelist in order to allow Blackbird to connect t
 **EU-1**
 - 98.67.252.35
 - 4.185.40.25
-
-**DE-1**
-- 20.218.193.129
-- 20.113.188.110
  
 **US-1**
 - 172.203.45.127
 - 4.152.142.130
+
+**US-2**
+20.65.57.255
+20.161.220.188
