@@ -5,17 +5,29 @@
     "description": "This API provides generic app functions for the Blackbird.io system.",
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "https://eu-1.blackbird.io/api-rest/",
+      "description": "Blackbird EU-1 instance"
+    },
+    {
+      "url": "https://us-2.blackbird.io/api-rest/",
+      "description": "Blackbird US-2 instance"
+    }
+  ],
   "paths": {
     "/nests/{nestId}/birds": {
       "get": {
-        "tags": [
-          "Birds"
-        ],
+        "summary": "Search Birds in a Nest",
+        "description": "Returns the Birds in a Nest. Results can be filtered by trigger type and status.",
+        "operationId": "searchBirds",
+        "tags": ["Birds"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest that contains the Birds.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -24,25 +36,37 @@
           {
             "name": "TriggerType",
             "in": "query",
+            "description": "Filters Birds by how they are triggered: manual, event, or scheduled. Only manual Birds can be triggered through the POST Bird endpoint in this API.",
             "style": "form",
             "schema": {
-              "pattern": "^(manual|event|scheduled)$",
-              "type": "string"
+              "type": "string",
+              "enum": ["manual", "event", "scheduled"]
             }
           },
           {
             "name": "Status",
             "in": "query",
+            "description": "Filters Birds by status. Unpublished Birds are drafts. Active Birds are enabled. Suspended Birds were active Birds that were temporarily paused.",
             "style": "form",
             "schema": {
-              "pattern": "^(active|unpublished|suspended)$",
-              "type": "string"
+              "type": "string",
+              "enum": ["active", "unpublished", "suspended"]
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "A list of Birds in the Nest.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BirdEntity"
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -72,14 +96,16 @@
     },
     "/nests/{nestId}/birds/{birdId}": {
       "get": {
-        "tags": [
-          "Birds"
-        ],
+        "summary": "Get a Bird",
+        "description": "Returns a single Bird in a Nest by its ID.",
+        "operationId": "getBird",
+        "tags": ["Birds"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -89,6 +115,7 @@
             "name": "birdId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Bird.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -97,7 +124,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The requested Bird.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BirdEntity"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -115,14 +149,16 @@
         }
       },
       "post": {
-        "tags": [
-          "Birds"
-        ],
+        "summary": "Fly a Manual Bird",
+        "description": "Starts a Flight for the specified Bird. Only Birds with a manual trigger type can be flown through this endpoint.",
+        "operationId": "flyBird",
+        "tags": ["Birds"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -132,6 +168,7 @@
             "name": "birdId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Bird. Only manual Birds can be triggered through this endpoint.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -140,7 +177,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The Bird was successfully flown."
           },
           "400": {
             "description": "Bad Request",
@@ -170,14 +207,16 @@
     },
     "/nests/{nestId}/birds/{birdId}/flights": {
       "get": {
-        "tags": [
-          "Flights"
-        ],
+        "summary": "Search Flights",
+        "description": "Search for Flights of the specified Nest. This endpoint is especially useful for applications that need to inspect Flight error messages to understand failed or cancelled Flights.",
+        "operationId": "searchFlights",
+        "tags": ["Flights"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -187,6 +226,7 @@
             "name": "birdId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Bird whose Flights are being listed.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -195,6 +235,7 @@
           {
             "name": "MinStartDate",
             "in": "query",
+            "description": "Filters Flights to those with a start date on or after this timestamp.",
             "style": "form",
             "schema": {
               "type": "string",
@@ -204,6 +245,7 @@
           {
             "name": "MaxStartDate",
             "in": "query",
+            "description": "Filters Flights to those with a start date on or before this timestamp.",
             "style": "form",
             "schema": {
               "type": "string",
@@ -213,16 +255,27 @@
           {
             "name": "Status",
             "in": "query",
+            "description": "Filters Flights by status. Active Flights are currently running. Cancelled Flights were cancelled by a user.",
             "style": "form",
             "schema": {
-              "pattern": "^(succeeded|failed|cancelled|active)$",
-              "type": "string"
+              "type": "string",
+              "enum": ["succeeded", "failed", "cancelled", "active"]
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "A list of Flights for the specified Bird, including error messages when available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FlightEntity"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -242,14 +295,16 @@
     },
     "/nests/{nestId}/birds/{birdId}/flights/{flightId}": {
       "get": {
-        "tags": [
-          "Flights"
-        ],
+        "summary": "Get Flight",
+        "description": "Get details of a specific Flight, including error messages when available. This is especially important for applications that need to diagnose failed or cancelled Flights.",
+        "operationId": "getFlight",
+        "tags": ["Flights"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -259,6 +314,7 @@
             "name": "birdId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Bird whose Flight is being retrieved.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -268,6 +324,7 @@
             "name": "flightId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Flight.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -276,7 +333,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The requested Flight.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlightEntity"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -294,16 +358,18 @@
         }
       }
     },
-    "/Nests/{nestId}/users": {
+    "/nests/{nestId}/users": {
       "put": {
-        "tags": [
-          "Nests"
-        ],
+        "summary": "Add User to Nest",
+        "description": "Adds a User to a Nest.",
+        "operationId": "addUserToNest",
+        "tags": ["Nests"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest to which the user will be added.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -331,7 +397,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The User was successfully added to the Nest."
           },
           "404": {
             "description": "Not Found",
@@ -349,16 +415,18 @@
         }
       }
     },
-    "/Nests/{nestId}/users/{userId}": {
+    "/nests/{nestId}/users/{userId}": {
       "delete": {
-        "tags": [
-          "Nests"
-        ],
+        "summary": "Remove User from Nest",
+        "description": "Removes a User from a Nest.",
+        "operationId": "removeUserFromNest",
+        "tags": ["Nests"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest from which the user will be removed.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -368,6 +436,7 @@
             "name": "userId",
             "in": "path",
             "required": true,
+            "description": "The ID of the User to remove from the Nest.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -376,7 +445,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The User was successfully removed from the Nest."
           },
           "404": {
             "description": "Not Found",
@@ -394,14 +463,25 @@
         }
       }
     },
-    "/Nests": {
+    "/nests": {
       "get": {
-        "tags": [
-          "Nests"
-        ],
+        "summary": "Search Nests",
+        "description": "Returns all Nests.",
+        "operationId": "searchNests",
+        "tags": ["Nests"],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "A list of Nests.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NestEntity"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -419,16 +499,18 @@
         }
       }
     },
-    "/Nests/{nestId}": {
+    "/nests/{nestId}": {
       "get": {
-        "tags": [
-          "Nests"
-        ],
+        "summary": "Get Nest",
+        "description": "Returns a single Nest by its ID.",
+        "operationId": "getNest",
+        "tags": ["Nests"],
         "parameters": [
           {
             "name": "nestId",
             "in": "path",
             "required": true,
+            "description": "The ID of the Nest to retrieve.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -437,7 +519,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The requested Nest.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NestEntity"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -455,14 +544,25 @@
         }
       }
     },
-    "/Users": {
+    "/users": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "summary": "Search Users",
+        "description": "Returns all Users.",
+        "operationId": "searchUsers",
+        "tags": ["Users"],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "A list of Users.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserEntity"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -480,16 +580,18 @@
         }
       }
     },
-    "/Users/{userId}": {
+    "/users/{userId}": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "summary": "Get User",
+        "description": "Returns a single User by its ID.",
+        "operationId": "getUser",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "userId",
             "in": "path",
             "required": true,
+            "description": "The ID of the User to retrieve.",
             "style": "simple",
             "schema": {
               "type": "string"
@@ -498,7 +600,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "The requested User.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -529,24 +638,99 @@
         },
         "additionalProperties": false
       },
-      "AddSubscriptionDto": {
-        "required": [
-          "callbackUrl",
-          "eventType"
-        ],
+      "BirdEntity": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "nestId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
             "type": "string",
+            "enum": ["active", "unpublished", "suspended"]
+          },
+          "triggerType": {
+            "type": "string",
+            "enum": ["manual", "event", "scheduled"]
+          },
+          "isPublished": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FlightEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "birdId": {
+            "type": "string"
+          },
+          "nestId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["succeeded", "failed", "cancelled", "active"]
+          },
+          "errorMessages": {
+            "type": "string",
+            "description": "Error details for the Flight when available. This field is especially useful for applications that need to diagnose failed or cancelled Flights.",
             "nullable": true
           },
-          "eventType": {
-            "minLength": 1,
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NestEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
             "type": "string"
           },
-          "callbackUrl": {
-            "minLength": 1,
+          "name": {
             "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserEntity"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

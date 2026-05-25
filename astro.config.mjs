@@ -13,52 +13,56 @@ export default defineConfig({
         dark: "./src/assets/dark-logo.svg",
         replacesTitle: true,
       },
-      social: {
-        github: "https://github.com/bb-io",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/bb-io",
+        },
+      ],
       plugins: [
         // Generate the OpenAPI documentation pages.
         starlightOpenAPI([
           {
             base: "api",
             label: "Blacbird API",
-            schema: "./schemas/openapi.json",
+            schema: "./public/api/openapi.json",
           },
         ]),
       ],
       sidebar: [
         {
           label: "Learning to fly",
-          autogenerate: { directory: "learning-to-fly" },
+          items: [{ autogenerate: { directory: "learning-to-fly" } }],
         },
         {
           label: "Concepts",
-          autogenerate: { directory: "concepts" },
+          items: [{ autogenerate: { directory: "concepts" } }],
         },
         {
           label: "Guides",
-          autogenerate: { directory: "guides" },
+          items: [{ autogenerate: { directory: "guides" } }],
         },
         {
           label: "Blacklake",
-          autogenerate: { directory: "blacklake" },
+          items: [{ autogenerate: { directory: "blacklake" } }],
         },
         {
           label: "Blueprints",
-          autogenerate: { directory: "blueprints" },
+          items: [{ autogenerate: { directory: "blueprints" } }],
         },
         {
           label: "SDK",
-          autogenerate: { directory: "sdk" },
+          items: [{ autogenerate: { directory: "sdk" } }],
         },
         {
           label: "More",
-          autogenerate: { directory: "more" },
+          items: [{ autogenerate: { directory: "more" } }],
         },
         ...openAPISidebarGroups,
         {
           label: "Apps",
-          autogenerate: { directory: "apps" },
+          items: [{ autogenerate: { directory: "apps" } }],
         },
       ],
     }),
