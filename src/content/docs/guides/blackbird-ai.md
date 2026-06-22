@@ -4,7 +4,7 @@ description: Blackbird gives organizations the flexibility to choose any model, 
 sidebar:
   label: Blackbird AI
   order: 12
-  hidden: true
+  hidden: false
 ---
 
 Blackbird is an AI orchestration platform built around a simple principle: you should be able to use the AI models that best fit your business, security requirements, governance policies, and budget—not the models a platform vendor chooses for you.
@@ -18,37 +18,37 @@ Whether you are using commercial foundation models, enterprise AI platforms, AI 
 Blackbird provides native integrations with a broad ecosystem of AI, language technology, speech, and content intelligence providers, including:
 
 * AI21 Labs
-* Amazon Bedrock
-* Amazon Comprehend
-* Amazon Polly
-* Amazon Translate
-* Anthropic (Claude models)
-* Azure AI Services
-* Cohere
-* DeepL Pro
-* ElevenLabs
-* Fireflies.ai
-* GlobalLink NOW
-* Google Translate
-* Google Vertex AI
-* Hugging Face
-* Intento
-* Language Weaver
+* [Amazon Bedrock](https://docs.blackbird.io/apps/amazon-bedrock/)
+* [Amazon Comprehend](https://docs.blackbird.io/apps/amazon-comprehend/)
+* [Amazon Polly](https://docs.blackbird.io/apps/amazon-polly/)
+* [Amazon Translate](https://docs.blackbird.io/apps/amazon-translate/)
+* [Anthropic](https://docs.blackbird.io/apps/anthropic/) (Claude models)
+* [Azure AI Services](https://docs.blackbird.io/apps/azure-ai-translator/)
+* [Cohere](https://docs.blackbird.io/apps/cohere/)
+* [DeepL Pro](https://docs.blackbird.io/apps/deepl/)
+* [ElevenLabs](https://docs.blackbird.io/apps/elevenlabs/)
+* [Fireflies.ai](https://docs.blackbird.io/apps/fireflies/)
+* [GlobalLink NOW](https://docs.blackbird.io/apps/globallink-now/)
+* [Google Translate](https://docs.blackbird.io/apps/google-translate/)
+* [Google Vertex AI](https://docs.blackbird.io/apps/google-gemini-ai/)
+* [Hugging Face](https://docs.blackbird.io/apps/hugging-face/)
+* [Intento](https://docs.blackbird.io/apps/intento/)
+* [Language Weaver](https://docs.blackbird.io/apps/language-weaver/)
 * Meta Llama
-* Modelfront
-* ModernMT
-* Mistral AI
-* OpenAI (GPT models)
-* Pangeanic
-* Phrase Language AI
-* Pinecone
+* [Modelfront](https://docs.blackbird.io/apps/modelfront/)
+* [ModernMT](https://docs.blackbird.io/apps/modernmt/)
+* [Mistral AI](https://docs.blackbird.io/apps/mistral-ai/)
+* [OpenAI](https://docs.blackbird.io/apps/openai/) (GPT models)
+* [Pangeanic](https://docs.blackbird.io/apps/pangeanic/)
+* [Phrase Language AI](https://docs.blackbird.io/apps/phrase-language-ai/)
+* [Pinecone](https://docs.blackbird.io/apps/pinecone/)
 * Stability AI
-* Synthesia
-* SYSTRAN
+* [Synthesia](https://docs.blackbird.io/apps/synthesia/)
+* [SYSTRAN](https://docs.blackbird.io/apps/systran/)
 * TAUS Estimate API
-* TAUS EPIC
-* Widn.AI
-* xAI (Grok models)
+* [TAUS EPIC](https://docs.blackbird.io/apps/taus/)
+* [Widn.AI](https://docs.blackbird.io/apps/widn/)
+* [xAI](https://docs.blackbird.io/apps/xai/) (Grok models)
 
 In addition, Blackbird can connect to virtually any AI service through APIs, custom endpoints, enterprise AI gateways, and private deployments.
 
