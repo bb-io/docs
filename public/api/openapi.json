@@ -205,6 +205,154 @@
         }
       }
     },
+    "/nests/{nestId}/birds/{birdId}/logs": {
+      "get": {
+        "summary": "Get Bird logs",
+        "description": "Returns Bird related events such as publishing, saving and subscription errors.",
+        "operationId": "getBirdLogs",
+        "tags": ["Birds"],
+        "parameters": [
+          {
+            "name": "nestId",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "birdId",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the Bird whose logs are being retrieved.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The zero-based page index to return.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of log items to return per page.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ascending",
+            "in": "query",
+            "description": "Whether to sort the logs in ascending order by creation time.",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of logs for the specified Bird.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BirdLogListResponse"
+                },
+                "examples": {
+                  "publishAndSaveEvents": {
+                    "summary": "Publishing and saving events",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "019f2320-b7be-73b5-b6d3-5fbe563bca02",
+                          "createdAt": "2026-07-02T13:59:34.590833Z",
+                          "workspaceId": 726,
+                          "workflowId": 148139,
+                          "eventType": "Discarded",
+                          "initiator": "Maksym Kharchenko"
+                        },
+                        {
+                          "id": "019f2320-8b16-7fcb-be73-c4de699d455b",
+                          "createdAt": "2026-07-02T13:59:23.158131Z",
+                          "workspaceId": 726,
+                          "workflowId": 148139,
+                          "eventType": "Saved",
+                          "initiator": "Maksym Kharchenko"
+                        },
+                        {
+                          "id": "019f231e-d16e-7975-ac41-7ca732efaf1c",
+                          "createdAt": "2026-07-02T13:57:30.094529Z",
+                          "workspaceId": 726,
+                          "workflowId": 148139,
+                          "eventType": "Published",
+                          "initiator": "Maksym Kharchenko"
+                        },
+                        {
+                          "id": "019f231e-c01b-70f7-93d1-b9ec6803ec88",
+                          "createdAt": "2026-07-02T13:57:25.659129Z",
+                          "workspaceId": 726,
+                          "workflowId": 148139,
+                          "eventType": "Saved",
+                          "initiator": "Maksym Kharchenko"
+                        }
+                      ],
+                      "totalCount": 4,
+                      "page": 0,
+                      "pageSize": 20
+                    }
+                  },
+                  "subscriptionError": {
+                    "summary": "Subscription error event",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "019f2290-928b-7471-8141-6f0269dc1133",
+                          "createdAt": "2026-07-02T11:22:07.883565Z",
+                          "workspaceId": 726,
+                          "workflowId": 148960,
+                          "eventType": "EventError",
+                          "message": "This is expected PluginUnhandled exception\n\n   at TestPlugin.Webhooks.Handlers.FailSubscriptionHandler.ThrowErrorForTesting(String errorType)\n   at TestPlugin.Webhooks.Handlers.FailSubscriptionHandler.SubscribeAsync(IEnumerable`1 authenticationCredentialsProviders, Dictionary`2 values)",
+                          "eventFailedBy": "Subscription",
+                          "errorType": "PluginUnhandled"
+                        }
+                      ],
+                      "totalCount": 1,
+                      "page": 0,
+                      "pageSize": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/nests/{nestId}/birds/{birdId}/flights": {
       "get": {
         "summary": "Search Flights",
@@ -338,6 +486,215 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FlightEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/nests/{nestId}/birds/{birdId}/flights/{flightId}/logs": {
+      "get": {
+        "summary": "Get Flight logs",
+        "description": "Returns Flight related events such as take-off, landing, informational logs and errors.",
+        "operationId": "getFlightLogs",
+        "tags": ["Flights"],
+        "parameters": [
+          {
+            "name": "nestId",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the Nest that contains the Bird.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "birdId",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the Bird whose Flight logs are being listed.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "flightId",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the Flight whose logs are being retrieved.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The zero-based page index to return.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of log items to return per page.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ascending",
+            "in": "query",
+            "description": "Whether to sort the logs in ascending order by creation time.",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of logs for the specified Flight.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlightLogListResponse"
+                },
+                "examples": {
+                  "flightLifecycleAndSdkLogs": {
+                    "summary": "Take-off, SDK logs and landing events",
+                    "value": {
+                      "items": [
+                        {
+                          "eventType": 2,
+                          "durationInSeconds": 11,
+                          "id": "019ef4c8-7d14-7f83-8b4a-0bf706d696c6",
+                          "createdAt": "2026-06-23T14:00:40.468335Z",
+                          "workspaceId": 682,
+                          "flowInstanceId": "e18b5841-3f1a-42d9-b7bf-b47200e6d761",
+                          "initiator": "Blackbird"
+                        },
+                        {
+                          "eventType": 4,
+                          "sdkLogType": "Information",
+                          "stepId": "a6fa91cd-928d-4958-8237-1b75e7c5fbbe",
+                          "scope": "0",
+                          "id": "019ef4c8-7aae-73f8-ac1f-0f7168f6fe09",
+                          "createdAt": "2026-06-23T14:00:39.854443Z",
+                          "workspaceId": 682,
+                          "flowInstanceId": "e18b5841-3f1a-42d9-b7bf-b47200e6d761",
+                          "initiator": "Blackbird",
+                          "message": "This is information log"
+                        },
+                        {
+                          "eventType": 5,
+                          "stepId": "75850698-a910-4039-a9ac-751abb34c0b4",
+                          "scope": "0",
+                          "errorType": 2,
+                          "isSkipped": true,
+                          "isRetried": false,
+                          "id": "019ef4c8-7a82-74b0-bddc-a61b8787c3e4",
+                          "createdAt": "2026-06-23T14:00:39.810444Z",
+                          "workspaceId": 682,
+                          "flowInstanceId": "e18b5841-3f1a-42d9-b7bf-b47200e6d761",
+                          "initiator": "Blackbird",
+                          "message": "This is expected PluginApplication exception"
+                        }
+                      ],
+                      "totalCount": 21,
+                      "page": 0,
+                      "pageSize": 20
+                    }
+                  },
+                  "errorEvents": {
+                    "summary": "Error and diagnostic events",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "createdAt": "2026-07-02T14:15:00.458Z",
+                          "workspaceId": 0,
+                          "flowInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "initiator": "string",
+                          "message": "string",
+                          "eventType": 1
+                        },
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "createdAt": "2026-07-02T14:15:00.458Z",
+                          "workspaceId": 0,
+                          "flowInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "initiator": "string",
+                          "message": "string",
+                          "eventType": 2,
+                          "durationInSeconds": 0
+                        },
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "createdAt": "2026-07-02T14:15:00.458Z",
+                          "workspaceId": 0,
+                          "flowInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "initiator": "string",
+                          "message": "string",
+                          "eventType": 3,
+                          "eventFailedBy": "Subscription",
+                          "isSkipped": true,
+                          "isRetried": true
+                        },
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "createdAt": "2026-07-02T14:15:00.458Z",
+                          "workspaceId": 0,
+                          "flowInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "initiator": "string",
+                          "message": "string",
+                          "eventType": 4,
+                          "sdkLogType": "Information",
+                          "stepId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "scope": "string"
+                        },
+                        {
+                          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "createdAt": "2026-07-02T14:15:00.458Z",
+                          "workspaceId": 0,
+                          "flowInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "initiator": "string",
+                          "message": "string",
+                          "eventType": 5,
+                          "stepId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                          "scope": "string",
+                          "eventFailedBy": "Subscription",
+                          "errorType": 0,
+                          "isSkipped": true,
+                          "isRetried": true
+                        }
+                      ],
+                      "totalCount": 0,
+                      "page": 0,
+                      "pageSize": 0
+                    }
+                  }
                 }
               }
             }
@@ -544,6 +901,105 @@
         }
       }
     },
+    "/notifications": {
+      "get": {
+        "summary": "Get Notifications",
+        "description": "Returns important notifications for admin users f.e. when a connection disconnects or a Bird is automatically deactivated",
+        "operationId": "getNotifications",
+        "tags": ["Notifications"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The zero-based page index to return.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The number of notifications to return per page.",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ascending",
+            "in": "query",
+            "description": "Whether to sort the notifications in ascending order by creation time.",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of admin notifications.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationListResponse"
+                },
+                "examples": {
+                  "connectionDisconnected": {
+                    "summary": "Connection disconnection notifications",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "019f22bd-6b5b-70de-ad71-85a4993da4b3",
+                          "createdAt": "2026-07-02T12:11:06.971611Z",
+                          "workspaceId": 726,
+                          "entityId": 18287,
+                          "entityName": "Release 5.8.0",
+                          "entityType": "Connection",
+                          "eventType": "ConnectionDisconnected",
+                          "isSeen": true,
+                          "message": "Connection check failed and all retries were exhausted. Please reconnect."
+                        },
+                        {
+                          "id": "019f22bc-2d5c-7e7b-ab7e-011449c05004",
+                          "createdAt": "2026-07-02T12:09:45.564406Z",
+                          "workspaceId": 726,
+                          "entityId": 18287,
+                          "entityName": "Release 5.8.0",
+                          "entityType": "Connection",
+                          "eventType": "ConnectionDisconnected",
+                          "isSeen": true,
+                          "message": "Connection check failed. Retrying connection, please wait."
+                        },
+                        {
+                          "id": "019f22b0-69bb-79a6-a85a-0e587b64484d",
+                          "createdAt": "2026-07-02T11:56:54.587375Z",
+                          "workspaceId": 726,
+                          "entityId": 14680,
+                          "entityName": "Hubspot Smoke 2",
+                          "entityType": "Connection",
+                          "eventType": "ConnectionDisconnected",
+                          "isSeen": true,
+                          "message": "Connection check failed. Retrying connection, please wait."
+                        }
+                      ],
+                      "totalCount": 308,
+                      "page": 0,
+                      "pageSize": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "summary": "Search Users",
@@ -664,6 +1120,70 @@
         },
         "additionalProperties": false
       },
+      "BirdLogEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "workspaceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workflowId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eventType": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventFailedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorType": {
+            "type": "string",
+            "nullable": true
+          },
+          "initiator": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BirdLogListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BirdLogEntity"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "FlightEntity": {
         "type": "object",
         "properties": {
@@ -696,6 +1216,96 @@
         },
         "additionalProperties": false
       },
+      "FlightLogEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "workspaceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "flowInstanceId": {
+            "type": "string"
+          },
+          "initiator": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "durationInSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "eventFailedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSkipped": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isRetried": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "sdkLogType": {
+            "type": "string",
+            "nullable": true
+          },
+          "stepId": {
+            "type": "string",
+            "nullable": true
+          },
+          "scope": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FlightLogListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FlightLogEntity"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "NestEntity": {
         "type": "object",
         "properties": {
@@ -710,6 +1320,66 @@
             "items": {
               "$ref": "#/components/schemas/UserEntity"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "workspaceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "entityId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "entityName": {
+            "type": "string"
+          },
+          "entityType": {
+            "type": "string"
+          },
+          "eventType": {
+            "type": "string"
+          },
+          "isSeen": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotificationEntity"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -766,7 +1436,7 @@
     "securitySchemes": {
       "Token": {
         "type": "apiKey",
-        "description": "Add your token to the authorization header. \n\nE.g. Authorization: 1ab2c3e4",
+        "description": "Add your token to the authorization header as the raw key only. Do not prefix it with \"Bearer \".\n\nE.g. Authorization: 1ab2c3e4",
         "name": "Authorization",
         "in": "header"
       }
