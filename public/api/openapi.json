@@ -260,6 +260,26 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Optional start timestamp to filter logs from, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Optional end timestamp to filter logs to, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           }
         ],
         "responses": {
@@ -570,6 +590,26 @@
             "style": "form",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Optional start timestamp to filter logs from, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Optional end timestamp to filter logs to, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
             }
           }
         ],
@@ -935,6 +975,26 @@
             "style": "form",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Optional start timestamp to filter notifications from, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Optional end timestamp to filter notifications to, in ISO 8601 format, for example 2027-10-13T16:33:46Z.",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
             }
           }
         ],
