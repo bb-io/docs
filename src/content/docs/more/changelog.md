@@ -2,6 +2,51 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (03-07-2026) 5.8
+Main features: Logs & Notifications
+
+![notifications](~/assets/docs/changelog/notifications.png)
+
+##### Bird editor
+- Bird logs have been added to the Bird editor, accessible by clicking on the logs icon on the top right of the Bird editor bar.
+  - Bird logs show who edited, saved, published, activated and deactivated a Bird and when.
+  - They also show if there are any issues during publishing, or when handling webhook/polling events. These errors are now displayed with a relevant stack trace if available.
+  - Birds now automatically deactivate if the webhook/polling fails 5 times in a row, indicating a structural issue.
+
+##### Flight page
+- Flight logs have been added to the Flight page, accessible by clicking the logs icon on the top right of the Flight page bar.
+  - Flight logs show take-off and landing times. They also log extra information that can be emitted from the Actions and Events (with custom log levels for the custom App builders among us!)
+  - Flight logs now also show stack traces for errors that occur.
+- Individual Actions and Events now have their own logs tab for logs that relate to these specific items. Stack traces can be found here.
+
+##### Other
+- Connection logs have been added to the connection tabs of the Apps pages, accessible by clicking the logs icon on the top right of the page next to the 'Add connection' button.
+  - Connection logs show who created and udpated connections and when.
+  - Connection logs also show when connections become disconnected, with stack trace logs as to why when available.
+- A global notifications icon has been added to the top menu bar next to the Nest selector
+  - Global notifications are available to admins and cover all nests at once.
+  - The current global notifications that can be received are:
+    - Connection disconnected, when any connection gets disconnected due to some error between Blackbird and the 3rd party application.
+    - Bird deactivated, when a Bird is automatically deactivated due to a structural issue.
+
+##### API
+- The API has received 3 new endpoints (see the API documentation for their use).
+  - /notifications to receive all notifications.
+  - /...birds/logs to get all the logs of a particular Bird.
+  - /...flights/logs to get all logs of a particular Flight.
+- A new event "notification_created" has been added as a webhook.
+- The Blackbird Service App has been updated reflecting these changes.
+
+### (06-06-2026) 5.7
+Main features: App caching
+- Public Apps are now cached in memory for a longer time acting more akin to serverless functions that are 'hot' and 'cold'. We have seen a 50% speed performance improvement for complex Birds under heavy load.
+- Optimized memory usage for Apps in Flights.
+
+##### Other
+- Large file download requests can now receive other HTTP headers than just the Authorization header.
+
+##### Bug fixes
+
 ### (06-05-2026) 5.6
 Main features: create & update variables
 
