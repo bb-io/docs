@@ -2,6 +2,14 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (20-07-2026) 5.9
+Main features: Internal & stability
+
+##### Other
+- Internal tooling will allow us to respond to errors quicker.
+- Some internal tweaks were made to authentication and internal service retries among others.
+
+
 ### (03-07-2026) 5.8
 Main features: Logs & Notifications
 
