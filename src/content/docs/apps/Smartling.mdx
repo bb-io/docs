@@ -52,13 +52,13 @@ Navigate to apps and search for Smartling. If you cannot find Smartling then cli
 - **Cancel job** cancels a job. All content within the job will be removed from the job and the content will be unauthorized.
 - **Update job** updates the attributes of the job, such as job name, description, due date, and reference number. Specify only attributes that need to be updated. Job can be edited only in _Draft (DRAFT)_, _Awaiting Authorization (AWAITING_AUTHORIZATION)_, _In Progress (IN_PROGRESS)_, _Completed (COMPLETED)_ statuses. Leave the _Callback URL_ and _Callback method_ parameters unspecified if you intend to use **On job completed** and/or **On job cancelled** events.
 - **Delete job** deletes a job. Only job that is in _Cancelled (CANCELLED)_ status can be deleted.
-- **Get job word count** retrieves the word count for a job. The word count is calculated based on the content in the job.
+- **Get job word count** retrieves the word count for a job. The word count is calculated based on the content in the job. You can optionally filter by workflow step types.
 - **Modify translation job schedule** modifies translation job schedule
 
 ### Job files
 
-- **Upload source file to job** adds all non-published strings from a file to a job. The file will be added for all locales of the job if _Target locales_ parameter is not specified.
-- **Upload file to project** Uploads original source content to project.
+- **Upload source file to job** adds all non-published strings from a file to a job. The file will be added for all locales of the job if _Target locales_ parameter is not specified. You can optionally provide a _Callback URL_ for the file upload endpoint.
+- **Upload file to project** Uploads original source content to project. You can optionally provide a _Callback URL_ for the file upload endpoint.
 - **Link uploaded file to job** adds all non-published strings from a file that has already been uplaoded to the project to the specified job. The file will be added for all locales of the job if _Target locales_ parameter is not specified.
 - **List source files within job** lists all source files within a job.
 - **Download source file**.
@@ -85,6 +85,13 @@ Navigate to apps and search for Smartling. If you cannot find Smartling then cli
 - **List translations for string by hashcode**.
 
 **Note**: A string added with **Add string to project** action can be authorized by a content owner in the Smartling Dashboard. Another way to authorize the string is to add it to a job with **Add string to job** action and then authorize the job with **Authorize job** action.
+
+### Tags
+
+- **Add tags to strings by hashcode** adds one or more tags to one or more strings.
+- **Remove tags from strings by hashcode** removes specified tags from one or more strings.
+- **Remove all tags from strings by hashcode** removes all tags from one or more strings.
+- **Get all tags for strings by hashcode** retrieves tags linked to one or more strings.
 
 ### Issues
 
@@ -132,13 +139,13 @@ Navigate to apps and search for Smartling. If you cannot find Smartling then cli
 - **On translation issue created** and **On translation issue created (manual)** are triggered when a translation issue is created.
 - **On source issue comment created** and **On source issue comment created (manual)** are triggered when a comment is added to a source issue.
 - **On translation issue comment created** and **On translation issue comment created (manual)** are triggered when a comment is added to a translation issue.
+- **On file published (manual)** is triggered when all authorized content in a file reaches the **Published** workflow step in a locale.
 - **On jobs authorized** and **On specific job authorized** are triggered when a job reaches the **IN_PROGRESS** status. The project-level event monitors all jobs in a project, while the specific job event monitors a single job provided as input.
 - **On jobs completed** and **On specific job completed** are triggered when a job reaches the **COMPLETED** status (the project-level event also considers **CLOSED** jobs). The project-level event monitors all jobs in a project, while the specific job event checks the status of a single job.
 - **On glossary entries added** is triggered when new glossary entries are created in a glossary, returning the entries added since the last polling cycle based on their creation date.
 
 ## Missing features
 
-- Tags
 - Translation quality checks
 - File Machine Translations
 - Custom fields
