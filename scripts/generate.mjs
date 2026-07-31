@@ -80,9 +80,18 @@ const altered_names = {
   AdobeWorkfront: "Adobe Workfront",
   Pantheon: "welocalize Pantheon",
   WelocalizeOpal: "welocalize Opal",
+  MicrosoftTeamsBot: "Microsoft Teams Bot",
 };
 
-const skip_repos = ["docs", "template-repo", "NotionOAuth", "LanguageWire", "CraftCMS"];
+const skip_repos = [
+  "docs",
+  "template-repo",
+  "NotionOAuth",
+  "LanguageWire",
+  "CraftCMS",
+  "BitbucketDataCenter",
+  "AdobeExperienceManagerOnPremise",
+];
 
 const all_repos = await octokit.paginate("GET /orgs/{org}/repos", {
   org: "bb-io",
@@ -94,14 +103,25 @@ await all_repos
   .filter((x) => !skip_repos.includes(x.name))
   .forEach(async ({ name, default_branch, html_url }) => {
     try {
-      const { data: raw_readme } = await octokit.rest.repos.getContent({
-        mediaType: {
-          format: "raw",
-        },
-        owner: "bb-io",
-        repo: name,
-        path: "README.md",
-      });
+      let raw_readme;
+      for (const readmePath of ["README.md", "readme.md"]) {
+        try {
+          const { data } = await octokit.rest.repos.getContent({
+            mediaType: {
+              format: "raw",
+            },
+            owner: "bb-io",
+            repo: name,
+            path: readmePath,
+          });
+          raw_readme = data;
+          break;
+        } catch (error) {
+          if (error.status !== 404 || readmePath === "readme.md") throw error;
+        }
+      }
+
+      if (!raw_readme) return;
 
       if (!raw_readme.includes(docs_comment_begin)) return;
 
