@@ -2,13 +2,48 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (03-08-2026) 5.10
+Main features: Summer Sweep Up
+
+##### Bird editor
+- The various dropdowns in the input panels of the Bird editor have had their positioning behaviour improved. Dropdowns will now dropdown close to the element you clicked on and their height will change predictably from now on.
+
+##### Other
+- The page titles of all Blackbird pages have been updated to reflect the actual content of the page. App pages display the app name, Flight pages the Bird name, Library pages the library name, etc. The Bird editor page also displays the Bird name but with a handy ✎ in front. This means that when you share a link to a Bird it's also a lot more descriptive. 
+- We've made several small tweaks to the previously deployed logs & notifications. Besides some small copy changes we:
+  - Now display the Nest name for each notification.
+  - Now display the name of the App that was disconnected.
+  - Automatically open the logs of a page when you get redirected after clicking on a notification.
+  - Updated the connection retry log behaviour. Only after all retries are exhausted does a log appear.
+
+##### Bug fixes
+- App documentation is now properly displayed on the Blackbird App details pages regardless of capitalization of the readme.md file.
+- Blueprints containing utility steps now correctly create Birds without deprecated steps.
+- The delay checkpoint frequency now correctly switches to 1 minute when decreasing 1 hour to 0.
+- Removed the extra scroll bar that could appear in the Blueprint select App modal on certain screen sizes.
+- Fixed the flying Bird animation in loops when skip Action and skip iteration steps are involved.
+- Fixed the copy on the Update Variable operator. It now correctly references variables instead of Actions.
+- Fixed an issue stalling certain queues on the back-end in rare scenarios.
+- Fixed an issue in the Bird editor where, after taking very specific types of steps, connections of another App were shown in the connection dropdown.
+- Fixed an issue where the selected file/folders were deselected in the file/folder picker after a cache refresh.
+- Fixed an issue where empty inputs were not displaying a warning after updating the connections of an imported Bird.
+- Fixed an issue where the 'Remove value' button would not appear on input dropdowns in certain cases.
+- Fixed an issue where a line break could not be the first character of a Variable.
+- Fixed an issue where multiple inputs would be removed on an array input with dropdowns when removing a single one.
+- Fixed an issue where a scheduled Bird could be published without a scheduled time.
+- Fixed an issue where Update Variable would not show a warning for an empty input value in certain cases.
+- Fixed an issue where the 'Select value' buttons on multiple inputs would be rendered above the logs panel.
+- Fixed an issue where the condition value of composable fields wouldn't be displayed correctly on decision labels in the Safari browser.
+- Fixed an issue where the wrong modal of a failed Flight that included a skipped iteration would be opened.
+- Fixed an issue where the selected App wouldn't display after refreshing the page and the step after was of an outdated App version.
+- Fixed an issue where the 'Add new connection' button's cached state would depend on the wrong App version of the first opened step.
+
 ### (20-07-2026) 5.9
 Main features: Internal & stability
 
 ##### Other
 - Internal tooling will allow us to respond to errors quicker.
 - Some internal tweaks were made to authentication and internal service retries among others.
-
 
 ### (03-07-2026) 5.8
 Main features: Logs & Notifications
@@ -52,8 +87,6 @@ Main features: App caching
 
 ##### Other
 - Large file download requests can now receive other HTTP headers than just the Authorization header.
-
-##### Bug fixes
 
 ### (06-05-2026) 5.6
 Main features: create & update variables
