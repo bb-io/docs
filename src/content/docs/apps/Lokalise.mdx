@@ -25,84 +25,254 @@ Lokalise is a continuous localization and translation management platform. This 
 
 ### Comments
 
-- **Add comments** adds comments to a specific `Key`.
+- **Create comment** Adds a comment to a key.
 
 ### Files
 
-- **List all project files** returns a list of file from the specific `Project`. You can filter them by name.
-- **Download all project files as ZIP** returns a ZIP file with all project files.
-- **Download project source/translated files"** returns a list of project files.
-- **Download XLIFF file** downloads file from task by language.
-- **Download XLIFF files from task** returns all task XLIFF files.
-- **Download all XLIFF files from project** returns all project XLIFF files.
-- **Upload/Delete file for project**
-- **Upload file to project as XLIFF** Upload a file to the project as XLIFF. You can set the `Overwrite existing keys` optional input to true if you want to update existing keys instead of adding new ones.
+- **Search project files** Searches files in a project, optionally filtering by file name.
+    Advanced settings:
+  - **File name filter**: Limits results to files whose names match provided text.
+- **Upload file to project** Uploads a file to a project and waits for processing to finish.
+    Advanced settings:
+  - **File name**: Overrides file name used for import.
+  - **Convert placeholders**: Converts supported placeholders during import.
+  - **Detect ICU plurals**: Detects ICU plural syntax during import.
+  - **Tags**: Applies multiple tags to imported keys.
+  - **Tag inserted keys**: Applies provided tags to newly inserted keys.
+  - **Tag updated keys**: Applies provided tags to updated keys.
+  - **Tag skipped keys**: Applies provided tags to skipped keys.
+  - **Replace modified**: Updates translations modified in imported file.
+  - **Slashn to linebreak**: Converts escaped newline sequences to line breaks.
+  - **Keys to values**: Uses key names as translation values.
+  - **Distinguish by file**: Keeps identical key names separate across files.
+  - **Apply TM**: Applies translation memory matches during import.
+  - **Use automations**: Runs configured automations after import.
+  - **Hidden from contributors**: Hides imported keys from contributors.
+  - **Cleanup mode**: Removes keys previously associated with file before importing replacement content.
+  - **Custom translation status IDs**: Applies multiple custom translation status IDs to imported translations.
+  - **Custom translation status inserted keys**: Applies custom translation statuses to inserted keys.
+  - **Custom translation status updated keys**: Applies custom translation statuses to updated keys.
+  - **Custom translation status skipped keys**: Applies custom translation statuses to skipped keys.
+  - **Skip detection of language by file name**: Prevents language detection from file name.
+  - **Format**: Overrides detected file format.
+  - **Filter task ID**: Limits import to keys assigned to task ID.
+- **Upload file to marketing project** Uploads a UTF-8 HTML file to a marketing project and waits for processing to finish.
+    Advanced settings:
+  - **Title**: Sets displayed title; defaults to file name and supports up to 256 characters.
+- **Upload file to project as XLIFF** Uploads an XLIFF file to a project, converting memoQ XLIFF files when needed.
+    Advanced settings:
+  - **Overwrite existing keys**: Updates matching existing keys instead of creating new keys.
+- **Download all project files as ZIP** Downloads all project files using selected export settings.
+    Advanced settings:
+  - **Original filenames**: Uses original file names and formats; when disabled, exports one file per language.
+  - **Bundle structure**: Sets bundle path structure when original filenames are disabled.
+  - **Directory prefix**: Sets bundle directory prefix when original filenames are enabled.
+  - **All platforms**: Includes keys from all platforms.
+  - **Filter languages**: Limits export to multiple languages; omit to export all languages.
+  - **Filter data**: Limits export to multiple translation states such as translated, reviewed, or verified.
+  - **Filter filenames**: Limits export to keys assigned to multiple selected files.
+  - **Add newline at the end of file**: Adds newline at end of each supported file.
+  - **Include tags**: Limits export to keys with multiple selected tags.
+  - **Exclude tags**: Excludes keys with multiple selected tags.
+  - **Export sort**: Sets key sort order in exported files.
+  - **Export empty as**: Controls how empty translations are exported.
+  - **Export null as**: Controls how null translations are exported for Ruby on Rails YAML files.
+  - **Include comments**: Includes key comments in supported files.
+  - **Include description**: Includes key descriptions in supported files.
+  - **Include project IDs**: Includes keys from multiple additional project IDs.
+  - **Triggers**: Specifies multiple integrations to trigger after export.
+  - **Filter repositories**: Limits generated pull requests to multiple repositories.
+  - **Replace breaks**: Replaces line breaks in translations with escaped newline sequences.
+  - **Disable references**: Leaves key-reference placeholders unresolved.
+  - **Plural format**: Overrides plural format for selected file type.
+  - **Placeholder format**: Overrides placeholder format for selected file type.
+  - **Webhook URL**: Sends export completion notification to URL.
+  - **Language mapping**: Overrides default ISO codes for multiple languages.
+  - **ICU numeric**: Replaces ICU plural forms zero, one, and two with numeric forms.
+  - **Escape percent**: Escapes universal percent placeholders for printf format.
+  - **Indentation**: Overrides indentation in supported files.
+  - **YAML include root**: Includes language ISO code as root key in YAML exports.
+  - **JSON unescaped slashes**: Leaves forward slashes unescaped in JSON exports.
+  - **Java properties encoding**: Sets encoding for Java properties files.
+  - **Java properties separator**: Sets key-value separator for Java properties files.
+  - **Bundle description**: Sets description for iOS or Android OTA SDK bundle.
+  - **Compact**: Exports minimum production structure for ARB files.
+- **Download project source files** Downloads source files for all project languages.
+- **Download translated project file** Downloads one translated project file by file name and language.
+- **Download XLIFF file** Downloads one task file for selected language.
+- **Download XLIFF files from task** Downloads all translation files for task.
+- **Download all XLIFF files from project** Downloads all translation files for project.
+- **Delete file** Deletes a file from a project.
+- **Download glossary** Exports project glossary terms to a TBX file.
+- **Upload glossary** Imports glossary terms from a TBX file into a project.
 
 ### Keys
 
-- **List all project keys** returns a list of keys for the specified project.
-- **List key IDs** returns a list of key IDs that can be used in actions for `Task` creation. Action includes default filters from Lokalise API as well as custom ones such as _Unverified_, _Unreviewed_ and _Exclude tags_.
-- **Update key translation** updates translation for a key, providing said key ID and locale.
-- **Get/Create/Delete key**
+- **Search project keys** Searches keys in a project and outputs source and target translations separately.
+    Advanced settings:
+  - **Filter key platforms**: Limits results to selected key platforms.
+  - **Filter untranslated keys**: Limits results by untranslated status.
+  - **Filter QA issues**: Limits results by QA issue filter.
+  - **Filter archived keys**: Limits results by archived status.
+  - **Filter translation language IDs**: Limits included translations to selected language IDs.
+  - **Filter keys**: Limits results to matching key names.
+  - **Include screenshots**: Includes screenshots associated with keys.
+  - **Include translations**: Includes translations associated with keys.
+  - **Filter key IDs**: Limits results to selected key IDs.
+  - **Unverified**: Filters keys by translation verification status.
+  - **Reviewed**: Filters keys by translation review status.
+  - **Untranslated language**: Includes keys missing translation in selected language.
+  - **Reviewed language**: Applies reviewed filter to selected language.
+  - **Unverified language**: Applies unverified filter to selected language.
+  - **Creation date from**: Sets earliest key creation date.
+  - **Creation date to**: Sets latest key creation date.
+- **Search key IDs** Searches key IDs using project and translation filters. Output IDs can be used when creating tasks.
+- **Create key** Creates a key in a project.
+    Advanced settings:
+  - **Description**: Sets key description.
+  - **Comments**: Adds multiple comments to key.
+  - **Is plural**: Marks key as plural.
+  - **Plural name**: Sets plural key name.
+  - **Is hidden**: Hides key from contributors.
+  - **Is archived**: Archives key after creation.
+  - **Context**: Adds context for translators.
+  - **Char limit**: Sets maximum character count.
+  - **Custom attributes**: Sets custom key attributes.
+- **Get key** Gets a key by ID and outputs source and target translations separately.
+- **Delete key** Deletes a key by ID.
 
 ### Languages
 
-- **List all system languages** returns a list of languages supported by Lokalise.
-- **List all project languages** returns a list of languages added to the `Project`.
-- **Build language** returns language object that can be used during `Task` creation. This way you can build multiple languages with unique assignees.
-- **Add/Delete delete project language**
+- **Search project languages** Searches languages in a project.
+- **Create project language** Adds one or more languages to a project.
+- **Delete language from project** Deletes a language from a project.
+- **Create task-language output** Builds a language with user or group assignees for task creation. Provide at least one assignee input.
+    Advanced settings:
+  - **Users**: Assigns multiple users to built language.
+  - **Groups**: Assigns multiple groups to built language.
 
 ### Projects
 
-- **Empty project** deletes all `Keys` and `Translations` from the specified project.
-- **List projects by date** returns a list of projects filtered by creation date interval.
-- **List/Get/Create/Update/Delete project(s)**
+- **Search projects** Searches projects using optional filters and project details.
+    Advanced settings:
+  - **Filter team ID**: Limits results to team ID.
+  - **Filter names**: Limits results to matching project names.
+  - **Include statistics**: Includes project statistics in output.
+  - **Include settings**: Includes project settings in output.
+  - **From**: Sets earliest project creation date.
+  - **To**: Sets latest project creation date.
+- **Create project** Creates a project.
+    Advanced settings:
+  - **Team ID**: Assigns project to team ID.
+  - **Languages**: Adds multiple initial project languages.
+  - **Base project language**: Sets source language for project.
+  - **Project type**: Sets project type.
+  - **Is segmentation enabled**: Enables project segmentation.
+- **Get project** Gets project details.
+- **Update project** Updates project's name and description.
+- **Delete project** Deletes a project.
+- **Delete project content** Deletes all keys and translations from a project.
 
 ### Segments
 
-- **List/Get/Update segment(s)**
+- **Search segments** Searches segments for a key and language.
+    Advanced settings:
+  - **Filter is reviewed**: Filters segments by reviewed option.
+  - **Filter unverified**: Filters segments by unverified option.
+  - **Filter untranslated**: Filters segments by untranslated option.
+- **Get segment** Gets a segment by number.
+- **Update segment** Updates a segment by number.
+    Advanced settings:
+  - **Is fuzzy**: Marks segment as fuzzy.
+  - **Is reviewed**: Marks segment as reviewed.
 
 ### Tasks
 
-- **Create task from the built languages** creates a new task with languages from `Build language` action results. Note: ordinary `Create` task action assigns all specified users/groups to all of the languages. If you need languages to have unique users/groups, please use this action.
-- **Create language task** creates a task for one target language. Because there is only one target language, you can immediatly assign users and groups, and filter keys by translation reviewed/unverified/untranslated.
-- **List/Create/Get/Update/Delete task(s)**
+- **Search tasks** Searches tasks in a project, optionally filtering by title or status.
+    Advanced settings:
+  - **Filter title**: Limits results to matching task title.
+  - **Filter statuses**: Limits results to selected task statuses.
+- **Create task** Creates a task and assigns selected users or groups to every target language.
+    Advanced settings:
+  - **Due date**: Sets task due date.
+  - **Keys**: Limits task to multiple selected keys.
+  - **Source language**: Sets task source language.
+  - **Auto close languages**: Closes task language when all assigned items are completed.
+  - **Auto close task**: Closes task when all language work is completed.
+  - **Auto close items**: Closes task items when work is completed.
+  - **Parent task ID**: Links task to parent task.
+  - **Closing tags**: Applies multiple tags when task closes.
+  - **Do lock translations**: Locks translations when task closes.
+- **Create task from the built languages** Creates a task with languages and assignees produced by Create task-language output action. Use this action when target languages need different users or groups.
+- **Create language task** Creates a task for one target language, with optional translation-state filters.
+    Advanced settings:
+  - **Translation reviewed**: Includes keys whose translation matches reviewed option for target language.
+  - **Translation unverified**: Includes keys whose translation matches unverified option for target language.
+  - **Translation missing**: Includes keys missing translation for target language.
+- **Get task** Gets task details and can expand group members when team ID is provided.
+- **Search files from task** Outputs unique original file names assigned to keys in a task.
+- **Update task** Updates task details.
+    Advanced settings:
+  - **Close task**: Closes task as part of update.
+- **Delete task** Deletes a task.
 
 ### Translations
 
-- **Update translation** updates specific translation
+- **Search translations** Searches project translations using optional filters.
+    Advanced settings:
+  - **Filter active task ID**: Limits results to translations assigned to active task ID.
+- **Update translation** Updates a translation by translation ID.
+    Advanced settings:
+  - **Is unverified**: Marks translation as unverified.
+- **Update key translation** Updates a translation by key ID and language code.
 
 ## Events
 
-- **On key modified for assignee** triggers when project key is added/modified or a new task is created.
-- **On project imported**
-- **On project exported**
-- **On project deleted**
-- **On project snapshot**
-- **On project branch added**
-- **On project branch deleted**
-- **On project branch merged**
-- **On project languages added**
-- **On project language removed**
-- **On project language settings changed**
-- **On project key added**
-- **On project keys added**
-- **On project key modified**
-- **On project keys deleted**
-- **On project key comment added**
-- **On project translation updated**
-- **On project translations updated**
-- **On project translation proofread**
-- **On project contributor added**
-- **On project contributor deleted**
-- **On team order created**
-- **On team order deleted**
-- **On team order completed**
-- **On project task initial TM leverage calculated**
-- **On project task created**
-- **On project task closed**
-- **On project task deleted**
-- **On project task language closed**
+- **On project imported** Starts when project content is imported.
+    Advanced settings:
+  - **User email**: Limits event to activity by selected user email.
+  - **Project ID**: Limits event to one project.
+- **On project exported** Starts when a project is exported.
+- **On project deleted** Starts when a project is deleted.
+- **On project snapshot created** Starts when a project snapshot is created.
+- **On project branch added** Starts when a branch is added to a project.
+- **On project branch deleted** Starts when a branch is deleted from a project.
+- **On project branch merged** Starts when a project branch is merged.
+- **On languages added** Starts when one or more languages are added to a project.
+- **On language removed** Starts when a language is removed from a project.
+- **On language settings changed** Starts when project language settings change.
+- **On key added** Starts when a key is added to a project.
+- **On keys added** Starts when multiple keys are added to a project.
+- **On key modified** Starts when a project key is modified.
+    Advanced settings:
+  - **Key ID**: Limits event to one key.
+- **On keys deleted** Starts when one or more keys are deleted from a project.
+- **On key comment added** Starts when a comment is added to a project key.
+- **On translation updated** Starts when a project translation is updated.
+    Advanced settings:
+  - **Translation ID**: Limits event to one translation.
+- **On translations updated** Starts when multiple project translations are updated.
+- **On translation proofread** Starts when a project translation is proofread.
+- **On contributor added** Starts when a contributor is added to a project.
+- **On contributor deleted** Starts when a contributor is deleted from a project.
+- **On order created** Starts when a team order is created.
+- **On order deleted** Starts when a team order is deleted.
+- **On order completed** Starts when a team order is completed.
+    Advanced settings:
+  - **Order ID**: Limits event to one order.
+- **On task initial TM leverage calculated** Starts when initial TM leverage calculation for a task finishes.
+    Advanced settings:
+  - **Task ID**: Limits event to one task.
+- **On key modified for assignee** Starts when a key assigned to a specific user is added or modified, or when a task is created.
+- **On key added (multiple projects)** Starts when a key is added to any selected project.
+- **On keys added or modified (multiple projects)** Starts when one or more keys are added or modified in any selected project.
+- **On task created** Starts when a task is created in a project.
+    Advanced settings:
+  - **Task type**: Limits event to selected task type.
+  - **Team ID**: Uses team to expand group assignees into users in event output.
+- **On task closed** Starts when a project task is closed.
+- **On task deleted** Starts when a project task is deleted.
+- **On task language closed** Starts when a language in a project task is closed.
 
 ## Feedback
 
