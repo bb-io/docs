@@ -26,6 +26,16 @@ Scheduled triggers are time-based and initiate processes at predefined intervals
 
 In Blackbird, you can choose an interval—from the moment the Bird is published, every X amount of hours or minutes the Bird will be triggered. Another option is to start the process daily at a specific time, or always on a set day of the week/month. Additionally, you can specify a timezone to avoid any confusion.
 
+### How minute intervals are scheduled
+
+Minute-based schedules are based on CRON, the standard system used to schedule recurring tasks. CRON schedules use the clock rather than a continuously running timer. When you publish a Bird, Blackbird creates the schedule using the minute at which it was published. The pattern then repeats within each hour.
+
+This matters when the selected interval does not divide evenly into 60 minutes. The interval is followed within an hour, then the pattern starts again in the next hour. As a result, one gap between runs can be shorter than the selected interval. This is expected CRON scheduling behaviour, not a duplicate trigger or a repeated flight.
+
+For example, if a Bird is published at `12:35` with an **Every 11 minutes** schedule, it can run at `12:35`, `12:46`, `12:57`, `13:08`, `13:19`, `13:30`, and then `13:35`. The final gap is 5 minutes, after which the clock-based pattern repeats each hour.
+
+For intervals that are consistent within the hour, choose a number that divides evenly into 60: **5, 6, 10, 12, 15, 20, 30,** or **60 minutes**. For example, 5, 10, 15, and 30-minute schedules have no shortened gap at the hour boundary. Blackbird does not currently provide a pure elapsed-time schedule for uneven values such as 11, 25, or 59 minutes.
+
 ![Scheduled](~/assets/docs/triggers/Scheduled.gif)
 
 **Key Features**:
