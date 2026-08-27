@@ -47,6 +47,7 @@ You do not need to create a connection to use Utilities. Instead, you can find U
 
 ### XLIFF files
 
+- **Add provenance** Add translation or review provenance to any file supported by Blackbird Filters and return an XLIFF 2.2 file. Person, organization, tool, and their reference alternatives are optional.
 - **Get locales** Gets the source and target locales from an XLIFF file.
 - **Replace XLIFF source with target** Swap `source` and `target` contents, exchange language attributes, and optionally remove target elements or set a new target language.
 - **Convert HTML to XLIFF** Convert HTML file to XLIFF 1.2 format
@@ -58,7 +59,7 @@ You do not need to create a connection to use Utilities. Instead, you can find U
 - **Extract context notes from XLIFF** Get notes for each segment.
 - **Check character limits** Checks target text against XLIFF character limits using Unicode grapheme length.
 - **Remove segments from XLIFF** Remove segments unless they match all enabled state, empty-target, quality-score, and changed-after filters. By default, all segments and the file skeleton are removed; empty unit containers are also removed. The resulting XLIFF cannot be merged back into a target file.
-- **Apply XLIFF target translations** Apply target translations from one XLIFF file to another by matching unit and segment IDs. Segments without IDs are matched by exact source content. The updated target file and warnings for skipped translations are provided as output.
+- **Apply XLIFF target translations** Apply target translations from one XLIFF file to another by matching unit and segment IDs. Segments without IDs are matched by exact source content. When a translation segment ID has no match, anonymous target segments can also match by exact source content. The updated target file and warnings for skipped translations are provided as output.
     Advanced settings:
   - **Copy provenance metadata**: Copy unit-level translation and review provenance from matched units. Disabled by default.
   - **Copy quality data**: Copy unit-level quality ratings from matched units. Disabled by default.
