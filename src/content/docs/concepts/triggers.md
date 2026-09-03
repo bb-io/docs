@@ -26,6 +26,14 @@ Scheduled triggers are time-based and initiate processes at predefined intervals
 
 In Blackbird, you can choose an interval—from the moment the Bird is published, every X amount of hours or minutes the Bird will be triggered. Another option is to start the process daily at a specific time, or always on a set day of the week/month. Additionally, you can specify a timezone to avoid any confusion.
 
+### Prevent overlapping flights
+
+If a scheduled Bird takes longer to finish than its trigger interval, another Flight may start while the previous one is still running, potentially creating duplicates, repeating work or consuming tokens.
+
+To prevent this, add the **Search other active flights** action at the beginning of the Bird. Add **End Flight** immediately after it and set its condition to **Has other flights Equal `True`**. If another Flight is active, the new Flight ends before any following actions.
+
+![Prevent overlapping scheduled flights by ending the Flight when another Flight is active](~/assets/docs/triggers/PreventOverlappingFlights.png)
+
 ### How minute intervals are scheduled
 
 Minute-based schedules are based on CRON, the standard system used to schedule recurring tasks. CRON schedules use the clock rather than a continuously running timer. When you publish a Bird, Blackbird creates the schedule using the minute at which it was published. The pattern then repeats within each hour.
