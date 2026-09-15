@@ -56,7 +56,13 @@ For intervals that are consistent within the hour, choose a number that divides 
 
 Event-based triggers respond to specific changes in an app by using webhooks or callbacks. These triggers are highly dynamic and are activated by defined conditions such as the arrival of a new email, the completion of a task, or changes in data. Event-based triggers are essential for real-time processing and responsive workflows, where the initiation of processes needs to be immediate and contingent on specific events.
 
-Once you select the Event type, move to the Connection tab or click Continue, choose the app you want to react to, and the specific type of event (e.g., a task being completed in my TMS, a new email in Outlook, a new order created in Plunet). After publishing the Bird, once the selected action occurs, your workflow will react to the action and start executing.
+Once you select the Event type, move to the Connection tab or click Continue, choose the App you want to react to, and the specific type of event (e.g., a task being completed in my TMS, a new email in Outlook, a new order created in Plunet). After publishing the Bird, once the selected event occurs, your Bird will react to the event and start flying.
+
+Some integrations process their webhooks asynchronously. For you, setup and use of these event triggers is the same: Blackbird accepts the notification first and then queues it for processing. This allows the integration to handle busy periods more reliably; a Flight may begin shortly after the event rather than during the sender's webhook request. Exactly which Apps support asynchronous webhooks you can view on the individual App pages.
+
+Some of these integrations also need to verify the event endpoint once before notifications can begin. Blackbird completes this verification automatically, then handles later events through the same queue. No additional setup is required in your Bird.
+
+Blackbird also checks active webhook subscriptions every 24 hours. If an App reports that a subscription is no longer working, Blackbird suspends the affected Bird and adds a **Bird deactivated** entry to its log and notifications, including the reason provided by the App.
 
 In the image below, we can choose to react to a number of different events happening in Zendesk, for instance, a new article being published. 
 
@@ -70,11 +76,19 @@ In case any extra setting is needed (some apps require this), you may see an URL
 **Responsiveness**: Enables real-time reaction to events.
 **Use Cases**: Real-time data updates, automated notifications, conditional task execution.
 
+### Events with multiple items
+
+Some Apps find or receive several items in one event, for example when they poll for changes or send a batch of updates. When such an event is used as a Bird trigger, Blackbird starts a separate Flight for every item. If the event has no items, it starts no Flights. This keeps each item independent, just as if the App had sent them one at a time.
+
+When the same event is used as a Checkpoint, its items stay together as a list. You can use that list in a loop or pass it to a later action.
+
 ## Bucketing
 
 Sometimes, reacting every single time something happens can create clutter as these actions occur too frequently. This is where Bucketing comes into play. You can adjust your Bird so that Blackbird collects these events and only starts after either X amount of actions have taken place or a set time has elapsed. Add your settings to the Bucketing tab for this.
 
 In the image below, following the previous example, we don't want to create a new TMS project each time an article is published in Zendesk. Instead, we wait until at least five articles are published or two hours have passed, whichever happens first. If after two hours only three articles were published, the Bird will execute anyway and create a new TMS project for those three articles. This adjustment ensures that processes are responsive enough without creating excessive noise.
+
+For an event that returns multiple items, Blackbird determines the individual Flights first. Bucketing then counts those Flights, not the number of webhook notifications or polling responses. For example, one notification containing five items contributes five Flights to the bucket.
 
 ![Bucketing](~/assets/docs/triggers/Bucketing.png)
 

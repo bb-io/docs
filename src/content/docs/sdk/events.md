@@ -52,6 +52,107 @@ All the properties passed to the `Result` class implementation will be available
 
 > **💡 Note**: The name of your webhook method cannot be changed, Blackbird would interpret it as a deleted and newly created event.
 
+### Asynchronous webhook handling
+
+By default, Blackbird invokes the webhook method while handling the incoming HTTP request. This is useful when the calling application needs a response calculated from the request, such as a webhook-verification challenge.
+
+For high-volume webhooks, implement the marker interface `IAsyncWebhookHandler` on the class decorated with `[WebhookList]`. In this mode, Blackbird immediately acknowledges every incoming webhook with HTTP `202 Accepted`, places it on a queue, and processes it afterwards to start the applicable Flights. This prevents a burst of webhook calls from being held up by application code running in the HTTP request path.
+
+Queues are scoped to a webhook subscription, not to an individual Bird. A single subscription may serve multiple Birds, so events for those Birds are processed through the same subscription queue.
+
+The webhook method and its response model are still where you deserialize the payload and produce the values exposed to the Bird. Its `HttpResponseMessage` is not used to answer the original sender in asynchronous mode: the sender has already received `202 Accepted`. Use this mode only when the provider does not require a synchronous challenge or another custom response.
+
+```cs
+[WebhookList("Async Invocation Mode")]
+public class AsyncInvocationModeWebhooks : BaseInvocable, IAsyncWebhookHandler
+{
+    public AsyncInvocationModeWebhooks(InvocationContext invocationContext)
+        : base(invocationContext)
+    {
+    }
+
+    [Webhook(
+        "On async event, no handshake (US 11056)",
+        typeof(AsyncModeHandler),
+        Description = "Receives the webhook asynchronously through the subscription queue.")]
+    public Task<WebhookResponse<TestResponse>> OnAsyncEvent(WebhookRequest request)
+    {
+        // This code runs after Blackbird has acknowledged and queued the webhook.
+        return Task.FromResult(new WebhookResponse<TestResponse>
+        {
+            Result = new TestResponse
+            {
+                TestString = "async-event",
+                TestDate = DateTime.Now.Date.AddHours(12),
+            }
+        });
+    }
+}
+```
+
+### Handshake invocation mode
+
+Some webhook providers require Blackbird to prove ownership of the endpoint before they activate a subscription. If that handshake requires a custom HTTP response, implement `IWebhookHandshakeHandler` on the `[WebhookList]` class. This interface gives the webhook list a synchronous path for responding to the handshake request:
+
+```cs
+public interface IWebhookHandshakeHandler
+{
+    Task<HttpResponseMessage?> HandleHandshakeAsync(WebhookRequest request);
+}
+```
+
+While the subscription is pending, Blackbird passes the handshake request to `HandleHandshakeAsync`. Return the exact `HttpResponseMessage` required by the provider—such as one that echoes a challenge header—to complete the handshake. Once the subscription is active, subsequent webhook requests are acknowledged with HTTP `202 Accepted`, queued, and processed asynchronously, just as with `IAsyncWebhookHandler`.
+
+The following example completes a handshake by echoing `X-Test-Challenge`. Requests without that header are normal events after activation and are routed through the subscription queue. As with asynchronous webhook handling, the `HttpResponseMessage` returned by the `[Webhook]` method does not form the response to the external sender after the subscription is active.
+
+```cs
+[WebhookList("Handshake Invocation Mode")]
+public class HandshakeInvocationModeWebhooks : BaseInvocable, IWebhookHandshakeHandler
+{
+    private const string ChallengeHeader = "X-Test-Challenge";
+
+    public HandshakeInvocationModeWebhooks(InvocationContext invocationContext)
+        : base(invocationContext)
+    {
+    }
+
+    public Task<HttpResponseMessage?> HandleHandshakeAsync(WebhookRequest request)
+    {
+        if (request.Headers == null)
+            return Task.FromResult<HttpResponseMessage?>(null);
+
+        var header = request.Headers.FirstOrDefault(x =>
+            string.Equals(x.Key, ChallengeHeader, StringComparison.OrdinalIgnoreCase));
+
+        if (string.IsNullOrWhiteSpace(header.Key) || string.IsNullOrWhiteSpace(header.Value))
+            return Task.FromResult<HttpResponseMessage?>(null);
+
+        var response = new HttpResponseMessage(HttpStatusCode.OK)
+        {
+            Content = new StringContent(string.Empty)
+        };
+        response.Headers.Add(ChallengeHeader, header.Value);
+        return Task.FromResult<HttpResponseMessage?>(response);
+    }
+
+    [Webhook(
+        "On handshake event (US 11056)",
+        typeof(HandshakeModeHandler),
+        Description = "Completes a webhook handshake, then receives events asynchronously.")]
+    public Task<WebhookResponse<TestResponse>> OnHandshakeEvent(WebhookRequest request)
+    {
+        return Task.FromResult(new WebhookResponse<TestResponse>
+        {
+            Result = new TestResponse
+            {
+                TestString = "handshake-event",
+                TestDate = DateTime.Now.Date.AddHours(12),
+            }
+        });
+    }
+}
+```
+
 ### Automatic subscription and unsubscription
 
 To define automatic subscription and unsubscription to webhooks you can implement an instance of `IWebhookEventHandler` and attach it to the webhook as the second argument (see the example above `typeof(ArticlePublishedHandler)`).
@@ -112,6 +213,68 @@ public class BaseWebhookHandler : BaseInvocable, IWebhookEventHandler
 ```
 
 > **💡 Tip**: you can use the Bird ID from the invocation context to generate unique keys for each subscription if required.
+
+### Validating webhook subscriptions
+
+An external system can remove, expire, or otherwise break a webhook subscription after it has been created. To let Blackbird detect this, implement `IAsyncValidatableWebhookEventHandler` in addition to `IWebhookEventHandler` on the handler class used by the `[Webhook]` attribute. Implement `ValidateSubscription` to check that the subscription and its payload URL are still valid, and return a `WebhookSubscriptionValidationResponse`.
+
+Blackbird calls this validator for every subscribed Bird every 24 hours. Return `IsValid = false` with a clear `Message` when the subscription is no longer working. Blackbird then suspends the Bird and adds a **Bird deactivated** entry to its log and a notification, both using your message as their description. A valid response leaves the Bird active.
+
+```cs
+public class SubscriptionDependsWithValidationHandler : BaseInvocable,
+    IWebhookEventHandler,
+    IAsyncValidatableWebhookEventHandler
+{
+    private readonly string sendTo;
+
+    public SubscriptionDependsWithValidationHandler(
+        InvocationContext invocationContext,
+        [WebhookParameter(true)] SubscriptionDependsInput input)
+        : base(invocationContext)
+    {
+        sendTo = input.SendTo;
+    }
+
+    public async Task SubscribeAsync(
+        IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProvider,
+        Dictionary<string, string> values)
+    {
+        var result = await PostAsync(new { subscription = true, payloadUrl = values["payloadUrl"] });
+        if (!result.IsSuccessStatusCode)
+            throw new ArgumentException("The external service rejected the webhook subscription.");
+    }
+
+    public Task UnsubscribeAsync(
+        IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProvider,
+        Dictionary<string, string> values)
+        => PostAsync(new { unsubscription = true });
+
+    public async Task<WebhookSubscriptionValidationResponse> ValidateSubscription(
+        IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProvider,
+        Dictionary<string, string> values)
+    {
+        if (string.IsNullOrWhiteSpace(sendTo))
+            return new() { IsValid = false, Message = "A destination URL is required." };
+
+        try
+        {
+            // Ping the same endpoint that was used to subscribe.
+            var result = await PostAsync(new { validation = true });
+            return result.IsSuccessStatusCode
+                ? new() { IsValid = true }
+                : new() { IsValid = false, Message = "The webhook subscription is no longer valid." };
+        }
+        catch (Exception exception)
+        {
+            return new() { IsValid = false, Message = exception.Message };
+        }
+    }
+
+    private Task<RestResponse> PostAsync(object body)
+        => new RestClient().ExecuteAsync(
+            new RestRequest(sendTo, Method.Post).AddJsonBody(body));
+}
+```
 
 ### Handling checkpoint edge cases
 
@@ -183,6 +346,73 @@ public async Task<WebhookResponse<IssueResponse>> OnIssueStatusChanged(WebhookRe
     return issueResponse;
 }
 ```
+
+## Multiple events
+
+An event can receive or discover more than one item at a time. This is common for polling events and for webhook providers that send a batch of changes in one notification. Add the `[MultipleEvents]` attribute to a webhook or polling event when its result is an `IEnumerable<T>` and each item should start its own Flight.
+
+For a Bird trigger, Blackbird splits the collection into individual event outputs and starts one Flight for each item. An empty collection starts no Flights. This gives users the same one-item-per-Flight behaviour regardless of whether an App uses webhooks, internal polling, or a polling event.
+
+> **💡 Note**: add defensive limits or batching in your App when a source can return a large collection. Avoid returning more than 100 items at once, as `[MultipleEvents]` would start a Flight for every item.
+
+For a checkpoint, `[MultipleEvents]` does not split the result into Flights. The checkpoint receives the complete collection as its usual array output, which can be used in a loop or passed to a later action.
+
+Apply the attribute alongside `[Webhook]` or `[PollingEvent]`; the output type must be a collection. This polling example returns three or more items and starts a separate Flight for each one:
+
+```cs
+[PollingEventList]
+public class MultipleEventsPollingList : BaseInvocable
+{
+    private const int DefaultItemsCount = 3;
+
+    public MultipleEventsPollingList(InvocationContext invocationContext)
+        : base(invocationContext)
+    {
+    }
+
+    [PollingEvent(
+        "On multiple items polled",
+        "Returns each item as a separate Flight."),
+     MultipleEvents] // <-- !!
+    public Task<PollingEventResponse<MultipleEventsPollingMemory, List<MultipleEventItem>>> OnMultipleItemsPolled(
+        PollingEventRequest<MultipleEventsPollingMemory> request,
+        [PollingEventParameter] MultipleEventsPollingRequest input)
+    {
+        var itemsCount = input.ItemsCount ?? DefaultItemsCount;
+        var items = Enumerable.Range(1, itemsCount)
+            .Select(index => new MultipleEventItem
+            {
+                Id = $"{DateTime.UtcNow:yyyyMMddHHmmssfff}-{index}",
+                Text = $"Item {index} of {itemsCount}",
+                Index = index
+            })
+            .ToList();
+
+        return Task.FromResult(new PollingEventResponse<MultipleEventsPollingMemory, List<MultipleEventItem>>
+        {
+            FlyBird = items.Any(),
+            Memory = new MultipleEventsPollingMemory
+            {
+                TotalPolls = (request.Memory?.TotalPolls ?? 0) + 1
+            },
+            Result = items
+        });
+    }
+}
+```
+
+The same attribute works with a webhook event:
+
+```cs
+[Webhook("On items changed", typeof(ItemsChangedHandler)), MultipleEvents]
+public Task<WebhookResponse<List<ChangedItem>>> OnItemsChanged(WebhookRequest request)
+    => Task.FromResult(new WebhookResponse<List<ChangedItem>>
+    {
+        Result = DeserializeChangedItems(request)
+    });
+```
+
+For Blueprinted Apps, no separate Blueprint configuration is required: after updating to an SDK version that supports `[MultipleEvents]`, the event is available in the single Blueprint variant.
 
 ## Callbacks
 
