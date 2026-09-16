@@ -72,7 +72,7 @@ public class AsyncInvocationModeWebhooks : BaseInvocable, IAsyncWebhookHandler
     }
 
     [Webhook(
-        "On async event, no handshake (US 11056)",
+        "On async event, no handshake",
         typeof(AsyncModeHandler),
         Description = "Receives the webhook asynchronously through the subscription queue.")]
     public Task<WebhookResponse<TestResponse>> OnAsyncEvent(WebhookRequest request)
@@ -102,6 +102,8 @@ public interface IWebhookHandshakeHandler
 ```
 
 While the subscription is pending, Blackbird passes the handshake request to `HandleHandshakeAsync`. Return the exact `HttpResponseMessage` required by the provider—such as one that echoes a challenge header—to complete the handshake. Once the subscription is active, subsequent webhook requests are acknowledged with HTTP `202 Accepted`, queued, and processed asynchronously, just as with `IAsyncWebhookHandler`.
+
+Return a non-null response when the request is a handshake challenge, `null` when it is not a challenge, and throw an exception when handling the request fails. Take care not to return `null` for an unhandled challenge: Blackbird treats it as a regular event and calls the `[Webhook]` method with a request that it may not be able to process.
 
 The following example completes a handshake by echoing `X-Test-Challenge`. Requests without that header are normal events after activation and are routed through the subscription queue. As with asynchronous webhook handling, the `HttpResponseMessage` returned by the `[Webhook]` method does not form the response to the external sender after the subscription is active.
 
@@ -136,7 +138,7 @@ public class HandshakeInvocationModeWebhooks : BaseInvocable, IWebhookHandshakeH
     }
 
     [Webhook(
-        "On handshake event (US 11056)",
+        "On handshake event",
         typeof(HandshakeModeHandler),
         Description = "Completes a webhook handshake, then receives events asynchronously.")]
     public Task<WebhookResponse<TestResponse>> OnHandshakeEvent(WebhookRequest request)
@@ -352,6 +354,8 @@ public async Task<WebhookResponse<IssueResponse>> OnIssueStatusChanged(WebhookRe
 An event can receive or discover more than one item at a time. This is common for polling events and for webhook providers that send a batch of changes in one notification. Add the `[MultipleEvents]` attribute to a webhook or polling event when its result is an `IEnumerable<T>` and each item should start its own Flight.
 
 For a Bird trigger, Blackbird splits the collection into individual event outputs and starts one Flight for each item. An empty collection starts no Flights. This gives users the same one-item-per-Flight behaviour regardless of whether an App uses webhooks, internal polling, or a polling event.
+
+For a polling event marked `[MultipleEvents]`, use `FlyBird` to suppress Flights even when the result contains items. Set `FlyBird` to `false` when the items should update memory but must not trigger the Bird.
 
 > **💡 Note**: add defensive limits or batching in your App when a source can return a large collection. Avoid returning more than 100 items at once, as `[MultipleEvents]` would start a Flight for every item.
 
