@@ -2,6 +2,16 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (17-09-2026) 5.11
+Main features: Event handling updates
+
+##### SDK
+- Webhooks can now use asynchronous invocation and handshake invocation modes for reliable, high-volume event handling.
+- Events can use `[MultipleEvents]` to start a Flight for each item returned by a webhook or polling event.
+- Webhook handlers can validate active subscriptions every 24 hours and suspend Birds whose subscriptions are no longer valid.
+
+For more information, see the [Events SDK documentation](/sdk/events).
+
 ### (03-08-2026) 5.10
 Main features: Summer Sweep Up
 
