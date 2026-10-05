@@ -2,6 +2,13 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (05-10-2026) 5.12
+Main features: 1 minute polling
+
+##### Bird editor
+- It's now possible to select a polling interval down to 1 minute.
+- All polling events now have a max processing time of 10 second below their interval. This makes sure that there are never multiple polling events polling at the same time.
+
 ### (17-09-2026) 5.11
 Main features: Event handling updates
 
