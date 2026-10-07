@@ -8,6 +8,11 @@ sidebar:
 ---
 > 💡 You can try Blacklake today. Contact us if you want to participate.
 
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+<YouTube id="https://youtu.be/54Lu74aEnRk" />
+> **Watch:** Quick overview of drafting and editing content in Blacklake (2 mins)
+
 ### Editing content and working with drafts
 
 Blacklake keeps content connected to the systems where it actually lives. When content is updated in a CMS, repository, or another connected system, Blacklake stores the change against the relevant content and text units, preserving context and history.
