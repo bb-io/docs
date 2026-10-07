@@ -6,9 +6,13 @@ sidebar:
   order: 9
   hidden: false
 ---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+
 > 💡 You can try Blacklake today. Contact us if you want to participate.
 
 <YouTube id="https://youtu.be/54Lu74aEnRk" />
+
 
 > **Watch:** Quick overview of drafting and editing content in Blacklake (2 mins)
 
