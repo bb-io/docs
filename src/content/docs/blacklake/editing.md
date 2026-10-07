@@ -9,7 +9,7 @@ sidebar:
 
 > 💡 You can try Blacklake today. Contact us if you want to participate.
 
-[**Watch:** Quick overview of drafting and editing content in Blacklake (2 mins)](https://youtu.be/54Lu74aEnRk)
+**Watch:** [Quick overview of drafting and editing content in Blacklake (2 mins)](https://youtu.be/54Lu74aEnRk)
 
 ### Editing content and working with drafts
 
