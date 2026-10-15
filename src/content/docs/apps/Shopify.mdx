@@ -18,7 +18,7 @@ Shopify is a cloud-based e-commerce platform that enables users to create, custo
 Other scopes that may be needed depending on desired actions are: 
 `write_products`, `read_products`, `write_publications`, `read_publications`, `write_translations`, `read_translations`, 
 `read_themes`, `read_content`, `read_markets`, `read_metaobjects`, `read_metaobject_definitions`,
-`write_online_store_navigation`, `read_online_store_navigation`.
+`write_online_store_navigation`, `read_online_store_navigation`, `read_legal_policies`.
 5. Copy the store name from the store domain. For example, if your domain is `mystore.myshopify.com`, then the store name is `mystore`.
 6. In Blackbird, choose one of the supported connection methods:
 7. `Developer API key`: paste the `Admin API access token`.
@@ -30,6 +30,8 @@ Other scopes that may be needed depending on desired actions are:
 
 ### Store
 
+- **Download store** Download store's translatable content, such as the homepage title and meta description
+- **Upload store** Upload store's translatable content, such as the homepage title and meta description
 - **Get store locales information** Get primary and additional store locales
 - **Download store resources** Download content of all store resource type items
 - **Upload store resources** Upload content of all store resource type items
@@ -98,9 +100,112 @@ Other scopes that may be needed depending on desired actions are:
 - **Download store theme JSON template** Download content of a specific store theme JSON template
 - **Upload store theme JSON template** Upload content of a specific store theme JSON template
 
+### Filters
+
+> **Note**: Filters are managed in Shopify's [Search & Discovery](https://apps.shopify.com/search-and-discovery) app. 
+> Set them up there before using the filter actions.
+
+- **Search filters** Search filters with specific criteria
+- **Download filter** Download content of a specific filter
+- **Upload filter** Upload content of a specific filter
+
+### Media images
+
+- **Search media images** Search media images with specific criteria
+- **Download media image** Download content of a specific media image
+- **Upload media image** Upload content of a specific media image
+
+### Store theme app embeds
+
+- **Search store theme app embeds** Search store theme app embeds with specific criteria
+- **Download store theme app embed** Download content of a specific store theme app embed
+- **Upload store theme app embed** Upload content of a specific store theme app embed
+
+### Metaobjects
+
+- **Search metaobjects** Search metaobjects with specific criteria
+- **Download metaobject** Download content of a specific metaobject
+- **Upload metaobject** Upload content of a specific metaobject
+
+### Store theme locale content
+
+- **Search store theme locale content** Search store theme locale content with specific criteria
+- **Download store theme locale content** Download content of a specific store theme locale content
+- **Upload store theme locale content** Upload content of a specific store theme locale content
+
+### Store theme section groups
+
+- **Search store theme section groups** Search store theme section groups with specific criteria
+- **Download store theme section group** Download content of a specific store theme section group
+- **Upload store theme section group** Upload content of a specific store theme section group
+
+### Store theme settings categories
+
+- **Search store theme settings categories** Search store theme settings categories with specific criteria
+- **Download store theme settings category** Download content of a specific store theme settings category
+- **Upload store theme settings category** Upload content of a specific store theme settings category
+
+### Store theme settings data sections
+
+> **Note**: These actions only support vintage themes.
+
+- **Search store theme settings data sections** Search store theme settings data sections with specific criteria
+- **Download store theme settings data section** Download content of a specific store theme settings data section
+- **Upload store theme settings data sections** Upload content of a specific store theme settings data section
+
+### Packing slip templates
+
+- **Search packing slip templates** Search packing slip templates with specific criteria
+- **Download packing slip template** Download content of a specific packing slip template
+- **Upload packing slip template** Upload content of a specific packing slip template
+
+### Payment gateways
+
+- **Search payment gateways** Search payment gateways with specific criteria
+- **Download payment gateway** Download content of a specific payment gateway
+- **Upload payment gateway** Upload content of a specific payment gateway
+
+### Selling plans
+
+> **Note**: Selling plans and selling plan groups are created by apps that support them, 
+> such as [Shopify Subscriptions](https://apps.shopify.com/shopify-subscriptions). 
+> Set them up before using the selling plans actions.
+
+- **Search selling plans** Search selling plans with specific criteria
+- **Download selling plan** Download content of a specific selling plan
+- **Upload selling plan** Upload content of a specific selling plan
+
+### Selling plan groups
+
+- **Search selling plan groups** Search selling plan groups with specific criteria
+- **Download selling plan group** Download content of a specific selling plan group
+- **Upload selling plan group** Upload content of a specific selling plan group
+
+### Store policies
+
+- **Search store policies** Search store policies with specific criteria
+- **Download store policy** Download content of a specific store policy
+- **Upload store policy** Upload content of a specific store policy
+
+### Article images
+
+- **Search article images** Search article images with specific criteria
+- **Download article image** Download content of a specific article image
+- **Upload article image** Upload content of a specific article image
+
+### Collection images
+
+- **Search collection images** Search collection images with specific criteria
+- **Download collection image** Download content of a specific collection image
+- **Upload collection image** Upload content of a specific collection image
+
 ### Content
 
-> **Note**: These actions support the following content types: collection, metafield, article, blog, page, theme, product, menu.
+> **Note**: These actions support the following content types: collection, metafield, article, blog, page, theme, product, 
+> menu, delivery method definition, email template, store theme JSON template, filter, media image, store theme app embed, 
+> metaobject, store theme locale content, store theme section group, store theme settings category, 
+> store theme settings data section, packing slip template, payment gateway, selling plan, selling plan group, store,
+> store policy, article image, collection image.
 
 - **Upload content** Upload content of a specific content type from a file
 - **Download content** Download content of a specific content type
@@ -133,11 +238,13 @@ Other scopes that may be needed depending on desired actions are:
 
 ### Content
 
-> **Note**: These events support the following content types: collection, article, blog, page, product, menu, 
-> delivery method definition, email template, store theme JSON template.
+> **Note**: These events support the following content types: collection, article, blog, page, product, *menu, 
+> delivery method definition, email template, store theme JSON template, filter, media image, store theme app embed, 
+> metaobject, store theme locale content, store theme section group, store theme settings category, 
+> packing slip template, store theme settings data section, payment gateway, selling plan, selling plan group, store,
+> store policy, article image, collection image*.
 >
-> Since Shopify does not expose the 'Updated at' value for some resources, this output for will always be empty 
-> for these content types: menu, delivery method, email template, store theme JSON template.
+> Shopify doesn't expose an update date for the content types in italic. The 'Updated at' output will always be empty for them.
 
 - **On content updated**
 
