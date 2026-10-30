@@ -70,6 +70,12 @@ Before you can connect you need to make sure that:
 - **Start project** Start project by Id
 - **Delete project** Delete project
 
+### Packages
+
+- **Start project package export** Starts exporting selected project tasks to translation packages. If task IDs are omitted, active human target-file tasks are selected automatically.
+- **Download exported package** Downloads a completed translation package as an `.sdlppx` file.
+- **Import project package** Imports a completed `.sdlppx` or `.sdlrpx` translation package.
+
 ### Reports 
 
 - **Download quote report** Download quote report for project
@@ -91,6 +97,13 @@ Before you can connect you need to make sure that:
 - **Get translation memory** Get translation memory
 - **Import TMX file** Import TMX file
 - **List translation memories** List translation memories
+
+## Checkpoints
+
+### Packages
+
+- **On package export finished**
+- **On package import finished**
 
 ## Events
 
