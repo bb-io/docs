@@ -2,6 +2,25 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (09-11-2026) 5.14
+Main features: Undo/redo, improved input persistence, Bird tasks
+
+##### Bird editor
+- We introduced the undo and redo button in the top left of the Bird editor. Any user action that changes the Bird definition can now be undone and redone. The undo/redo history only applies to the current user Bird editing session. Navigating away or editing the same Bird in a different page will not allow you to (re)use the same undo/redo history. Hotkeys (Ctrl+Z, Ctrl+Shift+Z and ⌘Z, ⌘⇧Z for Mac) were also added.
+- In the top right of the Bird editor a new "Bird Tasks" button lets the user open a menu that shows a list of all the missing/misconfigured inputs in their Actions. Clicking on any of the tasks easily navigates the user to this Action. All the missing/misconfigured inputs are now displayed in yellow instead of red.
+- Changing an App connection in the Bird editor now automatically revalidates all inputs that are dependent on this connection. If the same values are found in the new connection then the Bird editor keeps these inputs as if nothing changed. Only if revalidation fails and the old values are not found using the new connection then the inputs are marked as invalid and they will show up as a Bird task.
+- Changes in inputs (both required and advanced) are now also indicated between App version updates. This means that removed inputs now have to be checked by the users in order to avoid silent Bird logic changes across App updates.
+
+##### Other
+- Connections in the App page connection table now also show the connection type and the user who created the connection.
+- The "Get Flight context" utility Action now returns the user who flew the Bird if the Bird was triggered from the platform itself.
+
+### (19-10-2026) 5.13
+Main features: Internal connection handling update
+
+##### Other
+- This update only contained an internal update regarding the handling of connection states. No new features were released.
+
 ### (05-10-2026) 5.12
 Main features: 1 minute polling
 
