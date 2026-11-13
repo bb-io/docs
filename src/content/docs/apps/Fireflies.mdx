@@ -22,18 +22,24 @@ Fireflies.ai makes it seamless to capture voice conversations. This app allows y
 1. Navigate to apps and search for Fireflies.
 2. Click _Add Connection_.
 3. Name your connection for future reference e.g. 'My Fireflies'.
-4. Fill in the 'API token' obtained earlier.
+4. Fill in the 'API key' obtained earlier.
 5. Click _Connect_.
 
 ## Actions
 
 ### Transcription
 
-- **Get Transcription** Returns call general information, full transcription, and a detailed sentence data as json file.
+- **Get transcription** Get call details, transcription text, and a file with detailed sentence data.
+- **Get call participants** Get Fireflies attendee names and emails, participant email addresses and recorded names.
 
-### Events
+## Events
 
-- **On transcription completed** Starts a flight when transcription is competed. It has optional inputs to filter out desired transcriptions. Returns general information and full transcription of each new matching transcription.
+### Transcription
+
+- **On transcription completed** On transcription completion, output call details and transcription text.
+  - **User ID**: Only include transcriptions for this user.
+  - **Ignore calls if all participants are from email domains**: Ignore calls when every participant's email matches at least one of these domains.
+  - **Ignore calls with titles containing**: Ignore calls whose titles contain any of these values.
 
 ## Examples
 
