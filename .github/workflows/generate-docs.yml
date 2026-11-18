@@ -2,7 +2,7 @@ name: Generate app docs
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '12 * * * *'
   workflow_dispatch:
 
 permissions:
