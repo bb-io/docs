@@ -79,7 +79,7 @@ const altered_names = {
   PhraseStrings: "Phrase Strings",
   AdobeWorkfront: "Adobe Workfront",
   Pantheon: "welocalize Pantheon",
-  WelocalizeOpal: "welocalize Opal",
+  WelocalizeOpal: "Welocalize Opal",
   MicrosoftTeamsBot: "Microsoft Teams Bot",
 };
 
