@@ -1,0 +1,47 @@
+name: Generate app docs
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-app-docs-main
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v7
+        with:
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - run: npm ci --include=dev
+
+      - name: Generate app docs
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ github.token }}
+        run: node --experimental-modules scripts/generate.mjs
+
+      - name: Commit and push generated docs
+        run: |
+          git add -A -- src/content/docs/apps/
+          if git diff --cached --quiet; then
+            echo 'Generated app docs are up to date.'
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update generated app docs'
+          git push origin HEAD:refs/heads/main

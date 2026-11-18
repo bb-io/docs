@@ -106,10 +106,10 @@ const all_repos = await octokit.paginate("GET /orgs/{org}/repos", {
   per_page: 100,
 });
 
-await all_repos
+const generation = all_repos
   .filter((x) => !x.private)
   .filter((x) => !skip_repos.includes(x.name))
-  .forEach(async ({ name, default_branch, html_url }) => {
+  .map(async ({ name, default_branch, html_url }) => {
     try {
       let raw_readme;
       for (const readmePath of ["README.md", "readme.md"]) {
@@ -125,7 +125,7 @@ await all_repos
           raw_readme = data;
           break;
         } catch (error) {
-          if (error.status !== 404 || readmePath === "readme.md") throw error;
+          if (error.status !== 404) throw error;
         }
       }
 
@@ -170,8 +170,10 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
           .replace("</br>", "")
           .replace("<br>", "");
 
-      fs.writeFile(`./src/content/docs/apps/${friendly_name}.mdx`, md_content, function (err) {
-        if (err) throw err;
-      });
-    } catch {}
+      await fs.promises.writeFile(`./src/content/docs/apps/${friendly_name}.mdx`, md_content);
+    } catch (error) {
+      throw new Error(`Could not generate docs for ${name}: ${error.message}`);
+    }
   });
+
+await Promise.all(generation);
