@@ -146,7 +146,7 @@ Lokalise is a continuous localization and translation management platform. This 
 - **Search project languages** Searches languages in a project.
 - **Create project language** Adds one or more languages to a project.
 - **Delete language from project** Deletes a language from a project.
-- **Create task-language output** Builds a language with user or group assignees for task creation. Provide at least one assignee input.
+- **Create task-language output** Builds a language for task creation, with optional user or group assignees. Leave users and groups empty when building languages for Automatic translation or LQA by AI tasks.
     Advanced settings:
   - **Users**: Assigns multiple users to built language.
   - **Groups**: Assigns multiple groups to built language.
@@ -200,23 +200,39 @@ Lokalise is a continuous localization and translation management platform. This 
     Advanced settings:
   - **Filter title**: Limits results to matching task title.
   - **Filter statuses**: Limits results to selected task statuses.
-- **Create task** Creates a task and assigns selected users or groups to every target language.
+- **Create task** Creates a Translation, Review, Automatic translation, or LQA by AI task for the selected target languages. Translation and Review require users or groups. AI tasks must have no users or groups; Team can be omitted.
     Advanced settings:
   - **Due date**: Sets task due date.
   - **Keys**: Limits task to multiple selected keys.
   - **Source language**: Sets task source language.
-  - **Auto close languages**: Closes task language when all assigned items are completed.
-  - **Auto close task**: Closes task when all language work is completed.
-  - **Auto close items**: Closes task items when work is completed.
+  - **Auto close languages**: Closes task language when all assigned items are completed. For either AI task type, set to true or leave empty; false is rejected.
+  - **Auto close task**: Closes task when all language work is completed. For either AI task type, set to true or leave empty; false is rejected.
+  - **Auto close items**: Closes task items when work is completed. For Automatic translation, set to true or leave empty; false is rejected. For LQA by AI, either value is accepted and the property is omitted from the API request.
   - **Parent task ID**: Links task to parent task.
   - **Closing tags**: Applies multiple tags when task closes.
   - **Do lock translations**: Locks translations when task closes.
-- **Create task from the built languages** Creates a task with languages and assignees produced by Create task-language output action. Use this action when target languages need different users or groups.
-- **Create language task** Creates a task for one target language, with optional translation-state filters.
+- **Create task from the built languages** Creates any of the four task types with outputs from Create task-language output. Use this action when target languages need different users or groups. For AI tasks, build language-only outputs; any assigned users or groups are rejected.
+- **Create language task** Creates any of the four task types for one target language, with optional translation-state filters. Translation and Review require users or groups; AI tasks must have no assignees.
     Advanced settings:
   - **Translation reviewed**: Includes keys whose translation matches reviewed option for target language.
   - **Translation unverified**: Includes keys whose translation matches unverified option for target language.
   - **Translation missing**: Includes keys missing translation for target language.
+
+All three creation actions support the following optional settings **only for Automatic translation**. Supplying any of them for Translation, Review, or LQA by AI is rejected, including explicit false values. Leave settings empty to use Lokalise's defaults:
+
+| Setting | Behavior | Default |
+| --- | --- | --- |
+| **Translation engine** | Select AI, DeepL, or Google. DeepL and Google cannot be combined with Include AI score. | AI |
+| **Save AI translation to TM** | Save automatic translations to translation memory. Unreviewed AI/MT content can affect future AI translations. | false |
+| **Apply AI TM 100% matches** | Apply exact translation memory matches. | false |
+| **Mark verified** | Mark generated translations as verified. | true |
+| **Translate all segments** | Include existing translations and TM matches in projects with segmentation enabled. | false |
+| **Include AI score** | Run LQA after translation. Requires the AI engine and the AI scoring feature in your Lokalise plan. | false |
+
+For Automatic translation and LQA by AI, **Description** supplies AI instructions. Auto close languages and Auto close task must be true or empty in all three actions. Auto close items is omitted for LQA by AI, including when false is supplied, because the live API rejects that property for LQA. **Team** is only needed to browse users or groups, and AI tasks reject nonempty assignee inputs instead of ignoring them. Empty assignee collections are omitted from the API request.
+
+Task creation returns **Skipped languages**, containing the language code, reason, and optional message when Lokalise ignores unsupported AI target languages. It is empty when no skipped languages are reported. **Language codes** contains the languages actually included in the task.
+
 - **Get task** Gets task details and can expand group members when team ID is provided.
 - **Search files from task** Outputs unique original file names assigned to keys in a task.
 - **Update task** Updates task details.

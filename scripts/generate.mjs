@@ -91,6 +91,14 @@ const skip_repos = [
   "CraftCMS",
   "BitbucketDataCenter",
   "AdobeExperienceManagerOnPremise",
+  "Builder.io",
+  "DataForSEO",
+  "HeyGen",
+  "SalesforceMarketing",
+  "TikTok",
+  "Wrike",
+  "ZendeskChat",
+  "Zoom",
 ];
 
 const all_repos = await octokit.paginate("GET /orgs/{org}/repos", {
