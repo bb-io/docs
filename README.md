@@ -48,3 +48,5 @@ All commands are run from the root of the project, from a terminal:
 To generate apps run `npm run generate`
 
 The script goes through all repositories in our organization and looks for readme files with `<!-- begin docs -->` and `<!-- end docs -->` comments. All content within these comments is copied into a markdown file in `/src/content/docs/apps`
+
+In [`scripts/generate.mjs`](scripts/generate.mjs), add a repository name to `skip_repos` to exclude it from generation, or map it to a display name in `altered_names` to customize its title.
