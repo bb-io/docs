@@ -37,6 +37,8 @@ You do not need to create a connection to use Utilities. Instead, you can find U
 - **Extract using Regex from document** extract text from a document using Regex. This works only with text based files (txt, html, etc.) and is similar to 'Extract using Regex' but works with files.
 - **Extract many using Regex from document** Extract multiple text matches from a document using regular expressiosn. Works only with text-based files (txt, html, etc).
 - **Unzip files** takes a ZIP archive and extracts the files inside into multiple files in Blackbird.
+- **Parse COTI file** reads every project manifest in a COTI package and returns its source and target languages, translation files, packaged reference files, and parallel archive-path lists. The flat file and path outputs can be mapped directly into Assemble COTI file; detailed project, language, and manifest metadata is returned separately.
+- **Assemble COTI file** replaces translation files in an original COTI package using a positionally matched list of original archive paths, and returns a partial-delivery package containing only the projects for which every declared translation file was supplied. Manifests, reference files, and other project content are preserved.
 - **Compare file contents** returns whether the content of the given files are equal or not.
 - **Concatenate text files** concatenates multiple text files into one file.
 - **Convert docx to html** converts docx file into html
@@ -68,6 +70,7 @@ You do not need to create a connection to use Utilities. Instead, you can find U
 - **Remove segments from XLIFF** Remove segments unless they match all enabled state, empty-target, quality-score, and changed-after filters. By default, all segments and the file skeleton are removed; empty unit containers are also removed. The resulting XLIFF cannot be merged back into a target file.
 - **Apply XLIFF target translations** Apply target translations from one XLIFF file to another by matching unit and segment IDs. Segments without IDs are matched by exact source content. When a translation segment ID has no match, anonymous target segments can also match by exact source content. The updated target file and warnings for skipped translations are provided as output.
     Advanced settings:
+  - **Segment states**: Only copy translations in one or more selected states from the translations XLIFF file: Initial or empty, Translated, Reviewed, or Final. Leave empty to copy all states. Segments without a state are treated as initial; destination segment states are preserved.
   - **Copy provenance metadata**: Copy unit-level translation and review provenance from matched units. Disabled by default.
   - **Copy quality data**: Copy unit-level quality ratings from matched units. Disabled by default.
 - **Translate XLIFF file from translation memory** Apply exact source matches from a TMX translation memory to XLIFF targets. Source and target languages default to the XLIFF locales, compatible inline tags are preserved, and ambiguous or incompatible matches are reported as warnings.
@@ -109,6 +112,7 @@ You do not need to create a connection to use Utilities. Instead, you can find U
 - **Remove spreadsheet rows by condition** Remove the rows that meet the condition in the specfied column index.
 - **Replace using Regex in a spreadsheet row** Apply a regular expression and replace patternt to a spreadsheet row.
 - **Replace using Regex in a spreadsheet column** Apply a regular expression and replace patternt to a spreadsheet column.
+- **Replace multiple using Regex in spreadsheet columns** Apply multiple regular expressions and their corresponding replacements to multiple spreadsheet columns
 - **Insert row to a spreadsheet** Insert a new row at the given index in a spreadsheet.
 - **Insert empty rows to a spreadsheet** Insert empty rows at the given indexes in a spreadsheet.
 - **Group rows by column value in spreadsheet** Reads a spreadsheet and groups its rows based on a specific column's value.
