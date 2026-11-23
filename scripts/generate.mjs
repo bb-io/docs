@@ -95,7 +95,6 @@ const skip_repos = [
   "DataForSEO",
   "HeyGen",
   "SalesforceMarketing",
-  "TikTok",
   "Wrike",
   "ZendeskChat",
   "Zoom",
