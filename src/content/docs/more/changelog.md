@@ -2,6 +2,14 @@
   title: Changelog
   description: A global overview of all changes made to the BlackBird core platform
 ---
+### (23-11-2026) 5.15
+Main features: multiselect, drag & drop, hot keys
+
+##### Bird editor
+- You can now select multiple items in the Bird editor at once simply by clicking and dragging the left mouse button. Alternatively you can hold shift or control and click on multiple items. You can still navigate around the Bird editor by holding the middle mouse button (or scroll wheel).
+- When multiple items are selected, the user can choose to either drag them all to a different location in the Bird, or cut, copy, duplicate or delete all the items at once.
+- We added hot keys to most common Bird actions for both single and multiple selected items: cut (Ctrl + X), copy (ctrl + C), duplicate (Ctrl + D), rename (Ctrl + Enter), delete (Delete), paste (Ctrl + V), add new item: (Ctrl + Shift + I). Of course different operating systems have their equivalents implemented
+
 ### (09-11-2026) 5.14
 Main features: Undo/redo, improved input persistence, Bird tasks
 
